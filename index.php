@@ -1,5 +1,3 @@
-<?php
-echo "
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,4 +12,3 @@ echo "
         <p>Je vais te hacker clément, ce n'est qu'une question de temps ...</p>
     </body>
 </html>
-";
