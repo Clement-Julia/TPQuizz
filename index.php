@@ -8,6 +8,6 @@
         <title>TP Quizz</title>
     </head>
     <body>
-        <h1>Un super titre</h1>
+        <h1>TP Quizz</h1>
     </body>
 </html>
