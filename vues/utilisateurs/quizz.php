@@ -3,7 +3,7 @@ require_once "header.php";
 ?>
 
 <div id="bg-quizz"></div>
-<div class="container py-5">
+<div class="container pt-5">
 
     <div class="row d-flex justify-content-center mt-5">
         <div class="card col-12 col-lg-6 card-quizz">
@@ -42,6 +42,10 @@ require_once "header.php";
                                     <input class="ratio" type="radio" name="quizz" value="">
                                 </div>
                                 <div class="">Réponse 4, la réponse est pas la plus belle mais c'est sur qu'on salut l'effort</div>
+                            </div>
+
+                            <div class="text-center pt-4">
+                                <button class="btn-validate" type="submit" name="validate"><i class="fas fa-check"></i></button>
                             </div>
 
                         </form>

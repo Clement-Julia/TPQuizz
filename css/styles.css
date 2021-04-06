@@ -1,5 +1,5 @@
 #bg-quizz{
-    height: calc(100vh - 50px);
+    height: calc(100% - 56px);
     width: 100%;
     position: absolute;
     background: url("../src/img/bg-quizz.jpg");
@@ -8,6 +8,7 @@
 
 .card-quizz{
     border: 1px solid black;
+    box-shadow: 2px 2px 2px #777777;
 }
 
 .card-text-header{
@@ -31,9 +32,29 @@
     width: 25px;
     height: 25px;
     margin-right: 25px;
-    background-color: rgb(233, 233, 233);
+    background: #D59B97; /* fallback color if gradients are not supported*/ 
+    background: -webkit-linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    background: -moz-linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    background: -o-linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    background: linear-gradient(180deg,#D59B97, #AAB5BB 100%);
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     box-shadow: 1px 2px 2px grey;
 }
 
+.btn-validate{
+    width: 40px;
+    height: 40px;
+    background: #D59B97; /* fallback color if gradients are not supported*/ 
+    background: -webkit-linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    background: -moz-linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    background: -o-linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    background: linear-gradient(180deg,#D59B97, #AAB5BB 100%);
+    color: rgb(108, 238, 56);
+    border: 1px solid rgb(109, 192, 77);
+    border-radius: 50%;
+}
+
+.btn-validate:focus, .btn-validate:active{
+    outline: none;
+}
