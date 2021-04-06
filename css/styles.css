@@ -1,0 +1,39 @@
+#bg-quizz{
+    height: calc(100vh - 50px);
+    width: 100%;
+    position: absolute;
+    background: url("../src/img/bg-quizz.jpg");
+    background-size: cover;
+}
+
+.card-quizz{
+    border: 1px solid black;
+}
+
+.card-text-header{
+    font-size: 1.2em;
+    font-weight: 550;
+}
+
+.card-text-footer{
+    font-style: italic;
+}
+
+.global-ratio-container{
+    display: flex;
+}
+
+.ratio-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 25px;
+    width: 25px;
+    height: 25px;
+    margin-right: 25px;
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 2px 2px grey;
+}
+
