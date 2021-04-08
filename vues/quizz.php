@@ -1,45 +1,14 @@
 <?php
 require_once "header.php";
-
-$requete = getBdd()->prepare("SELECT idQuizz, titre, libelle, idQuestion, idUtilisateur, description, idReponse, reponse FROM quizz LEFT JOIN questions USING(idQuizz) LEFT JOIN reponses_quizz USING(idQuestion) LEFT JOIN categories USING(idCategorie) WHERE idQuizz = ?");
-$requete->execute([1]);
-$donnees = $requete->fetchAll(PDO::FETCH_ASSOC);
-
-$positionDonnéePrincipale = 0;
-$temp = 0;
-$colonne = 0;
-$carteQuizz = [];
-
-while($temp < 40){
-
-    if($temp == 0 || $temp % 4 == 0){
-        $carteQuizz[$colonne] = [
-            'idQuizz' => $donnees[$positionDonnéePrincipale]['idQuizz'],
-            'titre' => $donnees[$positionDonnéePrincipale]['titre'],
-            'libelle' => $donnees[$positionDonnéePrincipale]['libelle'],
-            'idQuestion' => $donnees[$positionDonnéePrincipale]['idQuestion'],
-            'idUtilisateur' => $donnees[$positionDonnéePrincipale]['idUtilisateur'],
-            'description' => $donnees[$positionDonnéePrincipale]['description']
-        ];
-        $colonne = $colonne + 1;
-    }
-    
-    $carteQuizz[($colonne - 1)]['reponses'][] = $donnees[$temp]['reponse'];
-
-    $temp = $temp + 1;
-    if($temp != 0 && $temp % 4 == 0){
-        $positionDonnéePrincipale = $positionDonnéePrincipale + 4;
-    }
-    
-}
-
-// echo "<pre>";
-// print_r($carteQuizz);
-// echo "</pre>";
+require_once "../modeles/Modele.php";
+require_once "../modeles/Quizz.php";
+$Quizz = new Quizz(1);
+$carteQuizz = $Quizz->getInfoQuizz();
 
 ?>
 
 <div id="bg-quizz"></div>
+
 <div class="container pt-5">
 
     <form id="form-quizz" method="post" action="../traitements/quizz.php">
@@ -51,9 +20,6 @@ $id = 1;
 $zIndex = 10;
 foreach($carteQuizz as $carte){
 
-    // echo "<pre>";
-    // print_r($carte);
-    // echo "</pre>";
 ?>
 
         <div id="<?=$id?>" class="card col-12 col-lg-6 card-quizz is-not-visible" style="z-index:<?=($zIndex - $id)?>;">
