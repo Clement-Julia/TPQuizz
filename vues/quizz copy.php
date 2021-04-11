@@ -21,15 +21,15 @@ require_once "../modeles/Quizz.php";
 <?php
 $id = 1;
 $zIndex = 10;
-for($i = 1; $i < 11; $i++){
+foreach($carteQuizz as $carte){
 
 ?>
 
         <div id="<?=$id?>" class="card col-12 col-lg-6 card-quizz is-not-visible" style="z-index:<?=($zIndex - $id)?>;">
             <div class="card-body">
-                <div class="card-text py-2 card-text-header d-flex justify-content-center"><div id="titre-<?=$id;?>"></div><div id="timer-<?=$id?>" class="timer">timer</div></div>
+                <div class="card-text py-2 card-text-header d-flex justify-content-center"><div><?=$carte["titre"]?></div><div id="timer-<?=$id?>" class="timer">timer</div></div>
                 <hr class="dropdown-divider">
-                <div id="question-<?=$id;?>" class="card-text"></div>
+                <div class="card-text">Question <?=$id?> : <br><?=$carte["description"]?></div>
                 <hr class="dropdown-divider">
                 <div class="card-text py-2">
                     <div class="input-group d-flex flex-column">
@@ -39,28 +39,28 @@ for($i = 1; $i < 11; $i++){
                                 <div class="ratio-container">
                                     <input class="ratio" type="radio" name="question-<?=$id?>" value="1">
                                 </div>
-                                <div id="reponse-1-<?=$id;?>"></div>
+                                <div class=""><?=$carte["reponses"][0]?></div>
                             </div>
 
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
                                     <input class="ratio" type="radio" name="question-<?=$id?>" value="2">
                                 </div>
-                                <div id="reponse-2-<?=$id;?>"></div>
+                                <div class=""><?=$carte["reponses"][1]?></div>
                             </div>
 
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
                                     <input class="ratio" type="radio" name="question-<?=$id?>" value="3">
                                 </div>
-                                <div id="reponse-3-<?=$id;?>"></div>
+                                <div class=""><?=$carte["reponses"][2]?></div>
                             </div>
 
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
                                     <input class="ratio" type="radio" name="question-<?=$id?>" value="4">
                                 </div>
-                                <div id="reponse-4-<?=$id;?>"></div>
+                                <div class=""><?=$carte["reponses"][3]?></div>
                             </div>
 
                             <div class="text-center pt-4 validate-container">

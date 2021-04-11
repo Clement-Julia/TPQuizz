@@ -23,7 +23,8 @@ for (var i = 0; i < btnValidates.length; i++){
             slideGouD++;
             id++;
         }
-        CompteARebour(1, id);
+        CompteARebour(2, id);
+        fetchCard(id);
         card = document.getElementById(id);
         card.style.visibility = "visible";
     });
@@ -48,4 +49,18 @@ function CompteARebour (endtime, id) {
 
         }
     }, 1000);
+}
+
+async function fetchCard(id){
+
+    var response = await fetch("../traitements/quizz.fetch.php?id=" + (id - 1));
+    var card = await response.json();
+
+    document.getElementById('titre-' + id).innerHTML = card["titre"];
+    document.getElementById('question-' + id).innerHTML = "Question : " + id + "<br>" + card["description"];
+    for(var i = 1; i < 5; i++){
+        console.log("reponse-" + i + "-" + id);
+        document.getElementById("reponse-" + i + "-" + id).innerHTML = card["reponses"][(i - 1)];
+    }
+
 }
