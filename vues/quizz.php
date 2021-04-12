@@ -52,30 +52,32 @@ for($i = 1; $i < 11; $i++){
                     <div class="input-group d-flex flex-column">
 
                             <input class="is-not-visible" type="checkbox" name="question-<?=$id?>" value="0" checked>
+                            <input id="id-question-<?=$id?>" type="hidden" name="id-question-<?=$id?>" value="">
+
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
-                                    <input class="ratio" type="radio" name="question-<?=$id?>" value="1">
+                                    <input id="question-1-<?=$id;?>" class="ratio" type="radio" name="question-<?=$id?>" value="1">
                                 </div>
                                 <div id="reponse-1-<?=$id;?>"></div>
                             </div>
 
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
-                                    <input class="ratio" type="radio" name="question-<?=$id?>" value="2">
+                                    <input id="question-2-<?=$id;?>" class="ratio" type="radio" name="question-<?=$id?>" value="2">
                                 </div>
                                 <div id="reponse-2-<?=$id;?>"></div>
                             </div>
 
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
-                                    <input class="ratio" type="radio" name="question-<?=$id?>" value="3">
+                                    <input id="question-3-<?=$id;?>" class="ratio" type="radio" name="question-<?=$id?>" value="3">
                                 </div>
                                 <div id="reponse-3-<?=$id;?>"></div>
                             </div>
 
                             <div class="global-ratio-container my-2">
                                 <div class="ratio-container">
-                                    <input class="ratio" type="radio" name="question-<?=$id?>" value="4">
+                                    <input id="question-4-<?=$id;?>" class="ratio" type="radio" name="question-<?=$id?>" value="4">
                                 </div>
                                 <div id="reponse-4-<?=$id;?>"></div>
                             </div>

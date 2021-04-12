@@ -76,11 +76,19 @@ async function fetchCard(id){
 
     var response = await fetch("../traitements/quizz.card.fetch.php?quizz=" + numeroQuizz + "&card=" + (id - 1));
     var card = await response.json();
+    var reponsesQuizz = card["reponses"];
 
     document.getElementById('titre-' + id).innerHTML = card["titre"];
     document.getElementById('question-' + id).innerHTML = "Question : " + id + "<br>" + card["description"];
-    for(var i = 1; i < 5; i++){
-        document.getElementById("reponse-" + i + "-" + id).innerHTML = card["reponses"][(i - 1)];
+    document.getElementById("id-question-" + id).value = card["idQuestion"];
+    console.log("id-question-" + id);
+    var i = 1;
+    for (const [key, value] of Object.entries(reponsesQuizz)) {
+        console.log(key);
+        console.log(value);
+        document.getElementById("reponse-" + i + "-" + id).innerHTML = value;
+        document.getElementById("question-" + i + "-" + id).value = key;
+        i++;
     }
 
 }

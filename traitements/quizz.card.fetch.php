@@ -17,6 +17,10 @@ $Quizz->getCardQuizz($_GET["quizz"]);
 $carteQuizz = $Quizz->getInfoQuizz();
 $carteQuizzJson = json_encode($carteQuizz[$_GET["card"]]);
 
+// echo "<pre>";
+// print_r($carteQuizz);
+// echo "</pre>";
+
 if(!$carteQuizzJson){
     exit;
 };

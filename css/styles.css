@@ -112,3 +112,29 @@
 .is-not-visible{
     visibility: hidden;
 }
+
+
+
+/* PAGE RESULTAT QUIZZ . PHP */
+
+#resultat_quizz_div_score, #resultat_quizz_score{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#resultat_quizz_score{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: 4px solid green;
+    padding: 0 10px;
+}
+
+#resultat_quizz_score div{
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    width: 100%;
+}
+

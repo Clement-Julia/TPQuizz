@@ -36,7 +36,7 @@ class Quizz extends Modele {
                 $indexDonneesTriees = $indexDonneesTriees + 1;
             }
             
-            $doneesTriees[($indexDonneesTriees - 1)]['reponses'][] = $requete[$temp]['reponse'];
+            $doneesTriees[($indexDonneesTriees - 1)]['reponses'][$requete[$temp]['idReponse']] = $requete[$temp]['reponse'];
 
             $temp = $temp + 1;
             if($temp != 0 && $temp % 4 == 0){
@@ -69,6 +69,10 @@ class Quizz extends Modele {
             $donneestriees[$cle] = $value;
         }
         return $donneestriees;
+    }
+
+    public function getInsertValueBddResultatQuizz(){
+
     }
 
 }
