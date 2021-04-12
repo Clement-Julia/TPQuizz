@@ -1,0 +1,175 @@
+.radius{
+    border-radius: 50rem;
+}
+
+.spe input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+  
+.spe input:focus {
+    outline: none;
+    border-bottom: 1px solid #4285f4;;
+}
+  
+.spe label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+  
+.spe input:focus ~ label, .spe input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #4285f4;
+}
+  
+.spe .highlight {
+    position: absolute;
+    height: 60%;
+    width: 300px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+  
+.spe input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+  
+@-webkit-keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+}
+@keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+}
+
+.spe .inputError {
+    border-bottom: 1px solid red
+}
+
+.spe .labelError {
+    color: red;
+    content: "Réessayez";
+}
+
+.spe .highlightErr {
+    position: absolute;
+    height: 60%;
+    width: 300px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+  
+.spe input:focus ~ .highlightErr {
+    -webkit-animation: inputHighlighterErr 0.3s ease;
+    -moz-animation: inputHighlighterErr 0.3s ease;
+    animation: inputHighlighterErr 0.3s ease;
+}
+  
+@-webkit-keyframes inputHighlighterErr {
+    from { background: red; }
+    to   { width: 0; background: transparent; }
+}
+@-moz-keyframes inputHighlighterErr {
+    from { background: red; }
+    to   { width: 0; background: transparent; }
+}
+@keyframes inputHighlighterErr {
+    from { background: red; }
+    to   { width: 0; background: transparent; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .floating-form {
+    width:320px;
+}
+  
+.floating-label { 
+position:relative; 
+margin-bottom:20px; 
+}
+
+.floating-input {
+    font-size:14px;
+    padding:4px 4px;
+    display:block;
+    width:100%;
+    height:30px;
+    background-color: transparent;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+  
+.floating-input:focus , .floating-select:focus {
+    outline:none;
+    border-bottom:2px solid #5264AE; 
+}
+  
+label {
+    color:#999; 
+    font-size:14px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:5px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+  
+.floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top:-18px;
+    font-size:14px;
+    color:#5264AE;
+}
+
+.floating-input:focus ~ .highlight , .floating-select:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+} */

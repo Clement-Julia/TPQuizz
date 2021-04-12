@@ -1,7 +1,7 @@
 <?php
 require_once "../Modele/modele.php";
 require_once "../Modele/Inscription.php";
-$inscription = new Inscription($_POST["identifiant"], $_POST["mdp"]);
+$inscription = new Inscription($_POST["identifiant"], $_POST["mdp"], $_POST["email"]);
 
 $erreurs = [];
 $erreursMdp = [];
@@ -10,8 +10,8 @@ if(!empty($_POST["identifiant"]) &&
     !empty($_POST["mdp"]) && 
     !empty($_POST["mdpVerif"])
 ){
-    $identifiant = $inscription->getIdentifiant($_POST["identifiant"]);
-    if(count($identifiant) > 0){
+    $email = $inscription->getEmail($_POST["email"]);
+    if(count($email) > 0){
         $erreurs[] = 0;
     }
 

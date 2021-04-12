@@ -4,6 +4,10 @@ require_once "../Modele/modele.php";
 
 $messagesErreurs = ["L'un des champs est vide", "Le mot de passe saisi est incorrect", "L'identifiant n'existe pas"];
 
+if(empty($_SESSION["idUtilisateur"])){
+    session_destroy();
+}
+
 if(!empty($_GET["err"])){
     ?>
     <div class="alert alert-warning">

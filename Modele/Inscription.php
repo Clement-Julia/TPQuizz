@@ -3,17 +3,19 @@ class Inscription extends Modele {
 
     protected $pseudo;
     private $pw;
+    private $email;
 
-    public function __construct($identifiant, $mdp){
+    public function __construct($identifiant, $mdp, $email){
         $this->pseudo = $identifiant;
         $this->pw = $mdp;
+        $this->email = $email;
     }
 
-    public function getIdentifiant($identifiant){
-        $requete = parent::getBdd()->prepare("SELECT pseudo FROM utilisateurs WHERE pseudo = ?");
-        $requete->execute([$identifiant]);
-        $identifiant = $requete->FetchAll(PDO::FETCH_ASSOC);
-        return $identifiant;
+    public function getEmail($email){
+        $requete = parent::getBdd()->prepare("SELECT email FROM utilisateurs WHERE email = ?");
+        $requete->execute([$email]);
+        $email = $requete->FetchAll(PDO::FETCH_ASSOC);
+        return $email;
     }
 
     public function check_mdp_format($mdp){
