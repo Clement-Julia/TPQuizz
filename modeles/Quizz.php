@@ -80,4 +80,14 @@ class Quizz extends Modele {
 
     }
 
+    public function getValuesResultatQuizz($idQuizz){
+
+        $requete = $this->getBdd()->prepare("SELECT idQuizz, titre, pseudo, r1.idReponse as id_reponse_utilisateur, (SELECT reponse FROM reponses_quizz WHERE idReponse = r1.idReponse) as reponse_utilisateur,idQuestion, r2.idReponse, reponse, vrai FROM reponses_users r1 INNER JOIN utilisateurs USING(idUtilisateur) INNER JOIN reponses_quizz r2 USING(idQuestion) INNER JOIN questions USING(idQuestion) INNER JOIN quizz USING(idQuizz) WHERE vrai = ? AND idQuizz = ?");
+        $requete->execute([1, $idQuizz]);
+        $resultat = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultat;
+
+    }
+
 }

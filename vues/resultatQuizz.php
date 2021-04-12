@@ -1,5 +1,13 @@
 <?php
 require_once "header.php";
+require_once "../modeles/Modele.php";
+require_once "../modeles/Quizz.php";
+
+$Quizz = new Quizz();
+$rapportQuizz = $Quizz->getValuesResultatQuizz($_GET["quizz"]);
+echo "<pre>";
+print_r($rapportQuizz);
+echo "</pre>";
 ?>
 
 <div class="container mt-5">
