@@ -4,10 +4,13 @@ require_once "../modeles/Modele.php";
 require_once "../modeles/Quizz.php";
 
 $Quizz = new Quizz();
-$rapportQuizz = $Quizz->getValuesResultatQuizz($_GET["quizz"]);
-echo "<pre>";
-print_r($rapportQuizz);
-echo "</pre>";
+$reponses = $Quizz->getValuesResultatQuizz($_GET["quizz"], 2);
+$note = 0;
+foreach ( $reponses as $reponse ){
+    if( $reponse["reponse_utilisateur"] == $reponse["reponse"] ){
+        $note++;
+    }
+}
 ?>
 
 <div class="container mt-5">
@@ -16,7 +19,7 @@ echo "</pre>";
         <div class="card-body">
             <div id="resultat_quizz_div_score" class="card-text py-3">
                 <div id="resultat_quizz_score">
-                    <div>9/10</div>
+                    <div><?=$note;?>/10</div>
                 </div>
             </div>
         </div>
@@ -30,25 +33,26 @@ echo "</pre>";
                 </button>
             </h2>
 
+            <?php
+            $i = 1;
+            foreach ( $reponses as $reponse ){
+            ?>
 
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div>LA QUESTION</div>
-                    <div>LA REPONSE DU JOUEUR</div>
-                    <div>LA REPONSE EXACT SI LE JOUEUR A EU FAUX</div>
+                <div id="collapseOne" class="accordion-collapse collapse show p-2 <?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "resultat-bg-rouge" : "resultat-bg-vert";?>" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="py-1 light-bold">Question <?=$i;?> : </div>
+                        <div class="py-1"><?=$reponse["description"];?></div>
+                        <div class="py-1"><?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "Vous aviez trouvé la bonne réponse : " . $reponse["reponse_utilisateur"] : "Votre réponse était : " . $reponse["reponse_utilisateur"];?></div>
+                        <?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "" : "<div class='py-1'>Mais la réponse correcte était : " . $reponse["reponse"] . "</div>";?>
+                    </div>
                 </div>
-            </div>
 
-            <hr class="dropdown-divider">
+                <hr class="dropdown-divider m-0">
 
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div>LA QUESTION</div>
-                    <div>LA REPONSE DU JOUEUR</div>
-                    <div>LA REPONSE EXACT SI LE JOUEUR A EU FAUX</div>
-                </div>
-            </div>
-
+            <?php
+            $i++;
+            }
+            ?>
 
         </div>
     </div>

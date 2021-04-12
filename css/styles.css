@@ -1,3 +1,7 @@
+.light-bold{
+    font-weight: 550;
+}
+
 #bg-quizz{
     height: calc(100% - 56px);
     width: 100%;
@@ -138,3 +142,10 @@
     width: 100%;
 }
 
+.resultat-bg-vert{
+    border-left: 10px solid #fd322b;
+}
+
+.resultat-bg-rouge{
+    border-left: 10px solid #47b167;
+}
