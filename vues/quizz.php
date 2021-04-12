@@ -9,7 +9,7 @@ require_once "../modeles/Quizz.php";
 
 <div class="container pt-5">
 
-    <form id="form-quizz" method="post" action="../traitements/quizz.php">
+    <form id="form-quizz" method="post" action="../traitements/quizz.php?quizz=<?=$_GET["quizz"];?>">
 
     <div id="card-container" class="row d-flex justify-content-center mt-5">
 

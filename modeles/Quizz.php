@@ -71,7 +71,12 @@ class Quizz extends Modele {
         return $donneestriees;
     }
 
-    public function getInsertValueBddResultatQuizz(){
+    public function getInsertValueBddResultatQuizz($valeurs){
+
+        $str = "INSERT INTO reponses_users(idUtilisateur, idReponse, idQuestion) VALUES " . substr(str_repeat('(?,?,?),', count($valeurs) / 3), 0, -1);; 
+
+        $requete = $this->getBdd()->prepare($str);
+        $requete->execute($valeurs);
 
     }
 
