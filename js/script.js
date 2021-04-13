@@ -77,19 +77,28 @@ async function fetchCard(id){
     var response = await fetch("../traitements/quizz.card.fetch.php?quizz=" + numeroQuizz + "&card=" + (id - 1));
     var card = await response.json();
     var reponsesQuizz = card["reponses"];
+    
+    var monTableau = Object.keys(reponsesQuizz).map(function(cle) {
+        return [Number(cle), reponsesQuizz[cle]];
+    });
+    monTableau.sort(()=> Math.random() - 0.5);
 
     document.getElementById('titre-' + id).innerHTML = card["titre"];
     document.getElementById('question-' + id).innerHTML = "Question : " + id + "<br>" + card["description"];
     document.getElementById("id-question-" + id).value = card["idQuestion"];
-    console.log("id-question-" + id);
     var i = 1;
-    for (const [key, value] of Object.entries(reponsesQuizz)) {
-        console.log(key);
-        console.log(value);
-        document.getElementById("reponse-" + i + "-" + id).innerHTML = value;
-        document.getElementById("question-" + i + "-" + id).value = key;
+    // for (const [key, value] of Object.entries(reponsesQuizz)) {
+    //     console.log(key);
+    //     console.log(value);
+    //     document.getElementById("reponse-" + i + "-" + id).innerHTML = value;
+    //     document.getElementById("question-" + i + "-" + id).value = key;
+    //     i++;
+    // }
+    monTableau.forEach(elem => {
+        document.getElementById("reponse-" + i + "-" + id).innerHTML = elem[1];
+        document.getElementById("question-" + i + "-" + id).value = elem[0];
         i++;
-    }
+    })
 
 }
 
@@ -98,10 +107,10 @@ async function fetchStart(numeroQuizz){
     var cardStart = await response.json();
     var designeds = document.querySelectorAll(".designed-by");
 
-    document.getElementById("start-header").innerHTML = "Catégorie : " + cardStart[0]["libelle"] + "<br>Quizz : " + cardStart[0]["titre"];
+    document.getElementById("start-header").innerHTML = "Catégorie : " + cardStart.libelle + "<br>Quizz : " + cardStart.titre;
     
     designeds.forEach(function(designed){
-        designed.innerHTML = "Designed By " + cardStart[0]["pseudo"];
+        designed.innerHTML = "Designed By " + cardStart.pseudo;
     })
     
 };

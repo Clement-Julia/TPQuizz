@@ -1,7 +1,5 @@
 <?php
 require_once "traitement.php";
-require_once "../modeles/Modele.php";
-require_once "../modeles/Quizz.php";
 
 if ( 
     isset($_POST["question-1"]) &&
@@ -40,6 +38,24 @@ if (
         header("location:../vues/resultatQuizz.php?quizz=" . $_GET["quizz"]);
 
     } else {
+
+        //JUSTE LE TRAVAIL A FAIRE POUR JEUDI
+        $Quizz = new Quizz($_GET["quizz"]);
+        echo $Quizz->getTitre();
+        echo "<br>";
+        echo $Quizz->getCategorie()->getIdCategorie();
+        echo "<br>";
+        echo $Quizz->getQuestions()[0]->getIdQuestion();
+        echo "<br>";
+        echo $Quizz->getQuestions()[0]->getDescription();
+        echo "<br>";
+        echo $Quizz->getQuestions()[0]->getReponses()[0]->getReponse();
+        echo "<br>";
+        echo $Quizz->getQuestions()[0]->getReponses()[0]->getVrai();
+        echo "<br>";
+        // echo "<pre>";
+        // print_r($Quizz);
+        // echo "</pre>";
 
     }
     

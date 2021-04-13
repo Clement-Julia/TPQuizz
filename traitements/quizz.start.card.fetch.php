@@ -1,6 +1,5 @@
 <?php
-require_once "../modeles/Modele.php";
-require_once "../modeles/Quizz.php";
+require_once "../modeles/Class.php";
 
 if( !isset($_GET["quizz"]) ){
 
@@ -12,18 +11,16 @@ if( !isset($_GET["quizz"]) ){
 
 };
 
-$Quizz = new Quizz();
-$CardStartQuizz = $Quizz->getInfoQuizzStartCard($_GET["quizz"]);
-$CardStartQuizzJson = json_encode($CardStartQuizz);
-echo $CardStartQuizzJson;
-exit;
+$Quizz = new Quizz($_GET["quizz"]);
+$json = $Quizz->getFormattingStartCardQuizzJson();
+$json = json_encode($json);
 
-if(!$CardStartQuizzJson){
+if(!$json){
     exit;
 };
 
 header('Content-Type: application/json;charset=utf-8');
-echo $CardStartQuizzJson;
+echo $json;
 
 exit;
 ?>
