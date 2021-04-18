@@ -56,13 +56,7 @@ if(isset($_GET["error"])){
         <input type="email" class="form-control" name="email" id="age" placeholder="Votre email" required>
     </div>
 
-    <div class="form-group text-center btn-group d-flex justify-content-center mt-4">
-        <a href="mdpOublier"><button type="button" class="btn btn-primary radius">
-            <span>Mot de passe oublié ?</span> 
-        </button></a>
-    </div>
-
-    <div class="form-group text-center btn-group d-flex justify-content-center mt-5">
+    <div class="form-group text-center btn-group d-flex justify-content-center mt-3">
         <button type="submit" class="btn btn-primary" name="submit" value="ON">Inscription</button>
         <a href="../vues/" class="btn btn-warning">Retour</a>
     </div>

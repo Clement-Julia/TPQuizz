@@ -30,7 +30,7 @@ if(count($erreurs) == 0){
     //     header("refresh:0;../admin/indexAdmin.php");
     // }
 }else {
-    $href = "../user/connexion.php?err=yes&";
+    $href = "../vues/connexion.php?err=yes&";
     foreach($erreurs as $erreur){
         $href .= $erreur . ",";
     }

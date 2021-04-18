@@ -21,4 +21,9 @@ class Mdp extends Modele {
         $reponse = $req->FetchAll(PDO::FETCH_ASSOC);
         return $reponse;
     }
+    
+    public function modifMdp($newMdp, $email){
+        $req = parent::getBdd()->prepare("UPDATE utilisateurs set mdp = ? WHERE email = ?");
+        $req->execute([$newMdp, $email]);
+    }
 }

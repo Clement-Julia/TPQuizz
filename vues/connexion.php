@@ -36,11 +36,16 @@ if(!empty($_GET["err"])){
             <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" value="<?=(isset($_POST['mdp']) ? $_POST['mdp'] : "")?>" >
     </div>
 
-    <div class="form-group text-center btn-group d-flex justify-content-center">
+    <div class="form-group text-center btn-group d-flex justify-content-center mt-4">
+        <a href="mdpOublier"><button type="button" class="btn btn-primary radius">
+            <span>Mot de passe oublié ?</span> 
+        </button></a>
+    </div>
+
+    <div class="form-group text-center btn-group d-flex justify-content-center mt-3">
         <button type="submit" class="btn btn-primary" name="submit" value="ON">Connexion</button>
         <a href="index.php" class="btn btn-warning">Retour</a>
     </div>
-
 </form>
 
 <?php
