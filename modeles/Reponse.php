@@ -42,4 +42,16 @@ class Reponse extends Modele {
         return $this->vrai;
     }
 
+    public function setIdReponse($idReponse){
+        $this->idReponse = $idReponse;
+    }
+
+    public function setReponse($reponse){
+        $this->reponse = $reponse;
+    }
+
+    public function setVrai($vrai){
+        $this->vrai = $vrai;
+    }
+
 }

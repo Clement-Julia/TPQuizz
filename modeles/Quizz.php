@@ -111,4 +111,22 @@ class Quizz extends Modele {
 
     }
 
+    public function setIdQuizz($idQuizz){
+        $this->idQuizz = $idQuizz;
+    }
+    public function setTitre($titre){
+        $this->titre = $titre;
+    }
+    public function setCategorie($categorie){
+        $this->categorie = $categorie;
+    }
+
+    public function addQuestion(){
+
+    }
+
+    public function removeQuestion(){
+
+    }
+
 }

@@ -2,9 +2,9 @@
 
 class Question extends Modele {
 
-    private $idQuestion;
-    private $description;
-    private $reponses = [];
+    private $idQuestion; // int
+    private $description; // string
+    private $reponses = []; // array
 
     public function __construct($idQuestion = null){
 
@@ -57,5 +57,30 @@ class Question extends Modele {
         return $this->reponses;
     }
 
+    public function setIdQuestion($idQuestion){
+        $this->idQuestion = $idQuestion;
+    }
+
+    public function setDescription($description){
+        $this->description = $description;
+    }
+
+    public function addReponse($reponse){
+        $this->reponses[] = $reponse;
+    }
+
+    public function removeReponse($idReponse){
+
+        foreach ($this->reponses as $clef => $valeur ) {
+            if ( $valeur->getIdReponse() == $idReponse ){
+
+                unset($this->reponses[$clef]);
+                
+            }
+        }
+
+    }
 
 }
+
+// $key = array_search(40489, array_column($userdb, 'uid'));

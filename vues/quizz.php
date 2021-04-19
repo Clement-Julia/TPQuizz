@@ -1,7 +1,6 @@
 <?php
 require_once "header.php";
-require_once "../modeles/Modele.php";
-require_once "../modeles/Quizz.php";
+require_once "../modeles/Class.php";
 
 ?>
 
