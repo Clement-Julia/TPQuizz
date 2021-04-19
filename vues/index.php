@@ -13,9 +13,9 @@ $req->execute();
 $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="alert alert-secondary mt-3">
+<div class="d-flex alert alert-secondary mt-3 py-3">
     Explorez les catégories ou visualisez tous les quizz !
-    <a href="listeQuizz.php"><button class="btn btn-primary" style="position: absolute; right:2%; bottom:10%">
+    <a href="listeQuizz.php" class="ml-auto"><button class="btn btn-primary">
         Voir tous les quizz <i class="fas fa-chevron-right"></i>
     </button></a>
 </div>
@@ -49,7 +49,7 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
     <?php
     foreach($Cats as $Cat){
         ?>
-        <a href="index.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-secondary">
+        <a href="quizz.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-grey mr-3">
             <?=$Cat["libelle"]?>
         </button></a>
         <?php
