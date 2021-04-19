@@ -101,3 +101,54 @@
     width: 500px;
     height: 300px;
 }
+
+.dropdown-menu{
+    position: absolute;
+}
+
+.over{
+    width: 150px;
+}
+
+.over:hover{
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%)
+}
+
+.over:active, .over:focus{
+    background-color: #609dff;
+}
+
+.recherche-barr{
+	background-color: #7c828e;
+    border-radius: 30rem;
+}
+
+.recherche-input{
+	border: 0;
+	width: 0;
+    padding: 0;
+	line-height: 37px;
+    outline: none;
+}
+
+.recherche-barr:hover > .recherche-input{
+	padding: 0 10px;
+	width: 250px;
+	transition: width 0.4s linear;
+}
+
+.recherche-icone:hover{
+	color: white;
+    text-decoration: none;
+}
+
+.recherche-icone{
+	height: 40px;
+	width: 40px;
+	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	color: white;
+}

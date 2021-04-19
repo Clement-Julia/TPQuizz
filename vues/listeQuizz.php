@@ -5,6 +5,5 @@ require_once "../Modele/modele.php";
 
 
 
-
 <?php
 require_once "footer.php";

@@ -1,8 +1,10 @@
 <?php
 require_once "../Modele/modele.php";
 require_once "../Modele/MdpOublier.php";
-if(empty($_SESSION["email"])){
-    $_SESSION["email"] = $_POST["email"];
+if(empty($_SESSION["email"]) || $_SESSION["email"]!= $_POST["email"]){
+    if(!empty($_POST["email"])){
+        $_SESSION["email"] = $_POST["email"];
+    }
 }
 $mdpOublier = new Mdp($_SESSION["email"]);
 

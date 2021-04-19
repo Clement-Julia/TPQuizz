@@ -15,9 +15,9 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
 
 <div class="alert alert-secondary mt-3">
     Explorez les catégories ou visualisez tous les quizz !
-    <button class="btn btn-primary" style="position: absolute; right:2%; bottom:10%">
+    <a href="listeQuizz.php"><button class="btn btn-primary" style="position: absolute; right:2%; bottom:10%">
         Voir tous les quizz <i class="fas fa-chevron-right"></i>
-    </button>
+    </button></a>
 </div>
 
 <div class="d-flex justify-content-center mt-5">
@@ -49,9 +49,9 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
     <?php
     foreach($Cats as $Cat){
         ?>
-        <button class="btn btn-secondary">
+        <a href="index.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-secondary">
             <?=$Cat["libelle"]?>
-        </button>
+        </button></a>
         <?php
     }
     ?>

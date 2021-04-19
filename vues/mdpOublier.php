@@ -33,8 +33,8 @@ elseif(!empty($_GET["status"]) && $_GET["status"] == "none"){
   ?>
   <form action="../traitements/mdpOublier.php" method="post">
     <div class="input-group mt-5 d-flex justify-content-center spe">
-      <input type="email" name="email" class="inputError" required>
-      <label class = "labelError"><i>Aucun compte n'est associé à cet email</i></label>
+      <input type="email" name="email" class="inputError" id="inputError" required>
+      <label class = "labelError" id="labelError"><i>Aucun compte n'est associé à cet email</i></label>
       <span class="highlightErr mt-3"></span>
     </div>
 
