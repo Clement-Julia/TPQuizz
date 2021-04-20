@@ -1,3 +1,4 @@
+
 .light-bold{
     font-weight: 550;
 }
@@ -156,4 +157,214 @@
 
 .input-success{
     background-color: #b8ffce;
+}
+
+.radius{
+    border-radius: 50rem;
+}
+
+.radius-md{
+    border-radius: 12px;
+}
+
+.policies{
+    font-family: "gt-walsheim", arial, helvetica, sans-serif;
+    color: #7e7e7e;
+}
+
+.spe input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+  
+.spe input:focus {
+    outline: none;
+    border-bottom: 1px solid #4285f4;;
+}
+  
+.spe label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+  
+.spe input:focus ~ label, .spe input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #4285f4;
+    content: "Réessayez";
+}
+  
+.spe .highlight {
+    position: absolute;
+    height: 60%;
+    width: 300px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+  
+.spe input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+  
+@-webkit-keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+}
+@keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+}
+
+.spe .inputError {
+    border-bottom: 1px solid red
+}
+
+.spe .labelError {
+    color: red;
+    content: "Réessayez";
+}
+
+.spe .highlightErr {
+    position: absolute;
+    height: 60%;
+    width: 300px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+  
+.spe input:focus ~ .highlightErr {
+    -webkit-animation: inputHighlighterErr 0.3s ease;
+    -moz-animation: inputHighlighterErr 0.3s ease;
+    animation: inputHighlighterErr 0.3s ease;
+}
+  
+@-webkit-keyframes inputHighlighterErr {
+    from { background: red; }
+    to   { width: 0; background: transparent; }
+}
+@-moz-keyframes inputHighlighterErr {
+    from { background: red; }
+    to   { width: 0; background: transparent; }
+}
+@keyframes inputHighlighterErr {
+    from { background: red; }
+    to   { width: 0; background: transparent; }
+}
+
+.carousel{
+    width: 500px;
+    height: 300px;
+}
+
+.dropdown-menu{
+    position: absolute;
+}
+
+.over{
+    width: 150px;
+}
+
+.over:hover{
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%)
+}
+
+.over:active, .over:focus{
+    background-color: #609dff;
+}
+
+.recherche-barr{
+	background-color: #7c828e;
+    border-radius: 30rem;
+}
+
+.recherche-input{
+	border: 0;
+	width: 0;
+    padding: 0;
+	line-height: 37px;
+    outline: none;
+    transition: width 0.2s linear;
+}
+
+.recherche-barr:hover > .recherche-input{
+	padding: 0 10px;
+	width: 250px;
+	transition: width 0.4s linear;
+}
+
+.notval {
+	padding: 0 10px;
+	width: 250px;
+	transition: width 0.4s linear;
+}
+
+.recherche-icone:hover{
+	color: white;
+    text-decoration: none;
+}
+
+.recherche-icone{
+	height: 40px;
+	width: 40px;
+	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	color: white;
+    background-color: #7c828e;
+    border: none;
+    cursor: pointer;
+}
+
+.container_intro {
+    background: #FFF;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 7px 17px 0px rgb(0 0 0 / 6%);
+    box-shadow: 0px 7px 17px 0px rgb(0 0 0 / 6%);
+    padding-top: 40px;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col_quiz_intro {
+    padding: 15px 40px;
+    margin: 0 0 40px;
+}
+
+.sep-md {
+    border-right: 2px #ededed solid;
+}
+
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.quiz_img {
+    width: 100%;
 }
