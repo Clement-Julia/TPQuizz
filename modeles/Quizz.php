@@ -111,6 +111,18 @@ class Quizz extends Modele {
 
     }
 
+    public function creerQuizz($titre, $idCategorie){
+        // il faudra rajouter l'idUtilisateur une fois les connexions ok
+        $requete = $this->getBdd()->prepare("INSERT INTO quizz(titre, idCategorie) VALUES ( ?, ? )");
+        $requete->execute([$titre, $idCategorie]);
+
+        $requete = $this->getBdd()->prepare("SELECT MAX(idQuizz) as idQuizz FROM quizz");
+        $requete->execute();
+
+        return $requete->fetch(PDO::FETCH_ASSOC);
+        
+    }
+
     public function setIdQuizz($idQuizz){
         $this->idQuizz = $idQuizz;
     }
@@ -121,11 +133,19 @@ class Quizz extends Modele {
         $this->categorie = $categorie;
     }
 
-    public function addQuestion(){
-
+    public function addQuestion($question){
+        $this->questions[] = $question;
     }
 
-    public function removeQuestion(){
+    public function removeQuestion($idQuestion){
+
+        foreach ($this->questions as $clef => $valeur ) {
+            if ( $valeur->getIdReponse() == $idQuestion ){
+
+                unset($this->questions[$clef]);
+                
+            }
+        }
 
     }
 

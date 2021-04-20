@@ -17,6 +17,14 @@ class Categorie extends Modele {
         }
 
     }
+
+    public function toutesLesCategories(){
+        
+        $requete = $this->getBdd()->prepare("SELECT * FROM categories");
+        $requete->execute();
+        return $requete->fetchAll(PDO::FETCH_ASSOC);
+
+    }
     
     public function getIdCategorie(){
         return $this->idCategorie;

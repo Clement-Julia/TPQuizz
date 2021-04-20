@@ -45,6 +45,18 @@ class Question extends Modele {
         }
     }
 
+    public function creerQuestion($description, $idQuizz){
+
+        $requete = $this->getBdd()->prepare("INSERT INTO questions(description, idQuizz) VALUES ( ?, ? )");
+        $requete->execute([$description, $idQuizz]);
+
+        $requete = $this->getBdd()->prepare("SELECT MAX(idQuestion) as idQuestion FROM questions");
+        $requete->execute();
+
+        return $requete->fetch(PDO::FETCH_ASSOC);
+
+    }
+
     public function getIdQuestion(){
         return $this->idQuestion;
     }

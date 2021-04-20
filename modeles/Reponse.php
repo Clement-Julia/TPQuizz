@@ -29,6 +29,13 @@ class Reponse extends Modele {
         $this->vrai = $vrai;
         
     }
+
+    public function creerReponse($reponse, $vrai, $idQuestion){
+
+        $requete = $this->getBdd()->prepare("INSERT INTO reponses_quizz(reponse, vrai, idQuestion) VALUES ( ?, ?, ? )");
+        $requete->execute([$reponse, $vrai, $idQuestion]);
+
+    }
     
     public function getIdReponse(){
         return $this->idReponse;
