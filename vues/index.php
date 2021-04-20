@@ -8,7 +8,7 @@ if(empty($_SESSION["idUtilisateur"])){
     session_destroy();
 }
 
-$req = $modele->getBdd()->prepare("SELECT libelle from categories");
+$req = $modele->getBdd()->prepare("SELECT libelle, icone from categories");
 $req->execute();
 $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -20,7 +20,10 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
     </button></a>
 </div>
 
-<div class="d-flex justify-content-center mt-5">
+<div class="mt-5 text-center">
+    <b style ="font-size:25px">Explorez les plus populaires :</b>
+</div>
+<div class="d-flex justify-content-center mt-3">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -44,14 +47,17 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<div class="mt-4 text-center">
-    <b>Ou explorer par catégorie :</b><br><br>
+<div class="mt-5 text-center">
+    <b style ="font-size:25px">Explorez par Catégories :</b><br><br>
     <?php
     foreach($Cats as $Cat){
         ?>
-        <a href="quizz.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-grey mr-3">
-            <?=$Cat["libelle"]?>
-        </button></a>
+        <div style="width:25%; display:inline-block; margin: 0 20px;" class="mb-4">
+            <a href="quizz.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-grey mr-3 py-3 pl-0 pr-3 radius-md policies" style="min-width: 230px;">
+                <img src="<?=$Cat["icone"]?>" style="width:30px; height:30px;" HSPACE="15">
+                <?=$Cat["libelle"]?>
+            </button></a>
+        </div>
         <?php
     }
     ?>

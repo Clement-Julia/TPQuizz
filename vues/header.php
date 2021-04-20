@@ -32,7 +32,7 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
                 <a class="nav-link active" aria-current="page" href="../vues/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Liste des Quiz</a>
+                <a class="nav-link" href="../vues/listeQuizz.php">Liste des Quiz</a>
               </li>
             </ul>
           </div>
@@ -59,12 +59,12 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
           </ul>
         </div>
         <div class="d-flex justify-content-end">  
-          <form class="form-inline mr-3" method="post">
+          <form class="form-inline mr-3" method="post" action="../traitements/redirection.php">
             <div class="recherche-barr">
-              <input class="recherche-input" name="filtre" type="search" placeholder="Recherche" aria-label="Search">
-              <a href="#" class="recherche-icone">
+              <input class="recherche-input" name="filtre" type="search" id="recherche" placeholder="Recherche" aria-label="Search" onclick="addClass()">
+              <button type="submit" class="recherche-icone">
                 <i class="fas fa-search"></i>
-              </a>
+              </button>
             </div>
           </form>
           <?=(!empty($_SESSION["idUtilisateur"]) ? "" : "<a href='inscription.php' class='btn-group btn btn-outline-primary btn-sm align-self-center ml-auto'>Inscription</a>");?>
