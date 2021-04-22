@@ -101,7 +101,7 @@ $id++;
 
 </div>
 
-<script src="../js/script.js"></script>
+<script src="../js/scriptQuizz.js"></script>
 
 <?php
 require_once "footer.php";

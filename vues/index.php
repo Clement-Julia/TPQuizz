@@ -1,10 +1,9 @@
 <?php
 require_once "header.php";
-require_once "../Modele/modele.php";
 
 $modele = new Modele();
 
-if(empty($_SESSION["idUtilisateur"])){
+if(isset($_SESSION["idUtilisateur"]) && empty($_SESSION["idUtilisateur"])){
     session_destroy();
 }
 

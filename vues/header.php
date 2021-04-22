@@ -1,10 +1,9 @@
 <?php
-require_once "../Modele/modele.php";
-$modele = new Modele();
+require_once "../modeles/modele.php";
+require_once "../modeles/Class.php";
+$Categories = new Categorie();
 $url = "/Exo/TPQuizz/vues/index.php";
-$req = $modele->getBdd()->prepare("SELECT libelle from categories");
-$req->execute();
-$Cats = $req->FetchAll(PDO::FETCH_ASSOC);
+$Cats = $Categories->toutesLesCategories();
 ?>
 
 <!DOCTYPE html>
@@ -72,4 +71,3 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </nav>
-    <div class="container">
