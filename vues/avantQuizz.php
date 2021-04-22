@@ -1,5 +1,6 @@
 <?php
 require_once "header.php";
+/*
 require_once "../Modele/modele.php";
 $modele = new Modele();
 
@@ -57,5 +58,5 @@ if(!empty($quizz) && !empty($_GET["filtre"])){
 
 
 
-
+*/
 require_once "footer.php";

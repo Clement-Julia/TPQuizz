@@ -1,6 +1,7 @@
 <?php
-require_once "../Modele/modele.php";
-require_once "../Modele/Inscription.php";
+require_once "../modeles/Modele.php";
+require_once "../modeles/Inscription.php";
+
 $inscription = new Inscription($_POST["identifiant"], $_POST["mdp"], $_POST["email"]);
 
 $erreurs = [];

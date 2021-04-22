@@ -33,26 +33,27 @@ foreach ( $reponses as $reponse ){
                 </button>
             </h2>
 
+            <div id="collapseOne" class="accordion-collapse collapse show p-2" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
             <?php
             $i = 1;
             foreach ( $reponses as $reponse ){
             ?>
 
-                <div id="collapseOne" class="accordion-collapse collapse show p-2 <?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "resultat-bg-rouge" : "resultat-bg-vert";?>" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body <?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "resultat-bg-rouge" : "resultat-bg-vert";?>">
                         <div class="py-1 light-bold">Question <?=$i;?> : </div>
                         <div class="py-1"><?=$reponse["description"];?></div>
                         <div class="py-1"><?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "Vous aviez trouvé la bonne réponse : " . $reponse["reponse_utilisateur"] : "Votre réponse était : " . $reponse["reponse_utilisateur"];?></div>
                         <?= $reponse["id_reponse_utilisateur"] == $reponse["idReponse"] ? "" : "<div class='py-1'>Mais la réponse correcte était : " . $reponse["reponse"] . "</div>";?>
                     </div>
-                </div>
-
-                <hr class="dropdown-divider m-0">
+                    <hr class="dropdown-divider my-1">
 
             <?php
             $i++;
             }
             ?>
+
+            </div>
 
         </div>
     </div>
