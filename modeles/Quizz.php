@@ -29,9 +29,9 @@ class Quizz extends Modele {
             // Pour chaque question
             foreach ( $questions as $question ){
 
-                    $objetQuestion = new Question();
-                    $objetQuestion->initialiserQuestion($question["idQuestion"], $question["description"]);
-                    $this->questions[] = $objetQuestion; 
+                $objetQuestion = new Question();
+                $objetQuestion->initialiserQuestion($question["idQuestion"], $question["description"]);
+                $this->questions[] = $objetQuestion; 
             }
 
         }

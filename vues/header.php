@@ -1,10 +1,8 @@
 <?php
-require_once "../Modele/modele.php";
+require_once "../traitements/traitement.php";
 $modele = new Modele();
 $url = "/Exo/TPQuizz/vues/index.php";
-$req = $modele->getBdd()->prepare("SELECT libelle from categories");
-$req->execute();
-$Cats = $req->FetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +10,7 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/f3f16a7b72.js" crossorigin="anonymous"></script>
     <title>TPQuizz</title>
@@ -59,7 +57,7 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
           </ul>
         </div>
         <div class="d-flex justify-content-end">  
-          <form class="form-inline mr-3" method="post" action="../traitements/redirection.php">
+          <form class="form-inline me-3" method="post" action="../traitements/redirection.php">
             <div class="recherche-barr">
               <input class="recherche-input" name="filtre" type="search" id="recherche" placeholder="Recherche" aria-label="Search" onclick="addClass()">
               <button type="submit" class="recherche-icone">
@@ -72,4 +70,3 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </nav>
-    <div class="container">

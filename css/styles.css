@@ -84,7 +84,7 @@
     animation: slide-left forwards 1.5s;
 }
 
-@-webkit-keyframes slide-left {
+@keyframes slide-left {
     0% {
         opacity: 1;
         display: block;
@@ -101,7 +101,7 @@
     animation: slide-right forwards 1.5s;
 }
 
-@-webkit-keyframes slide-right {
+@keyframes slide-right {
     0% {
         opacity: 1;
         display: block;

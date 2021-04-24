@@ -1,7 +1,8 @@
 <?php
 require_once "header.php";
-require_once "../Modele/modele.php";
-require_once "../Modele/MdpOublier.php";
+require_once "../traitements/traitement.php";
+require_once "../vues/container.php";
+
 if(!empty($_SESSION["email"])){
   $mdpOublier = new Mdp($_SESSION["email"]);
   foreach($mdpOublier->getQuestion($_SESSION["email"]) as $ontest){

@@ -1,12 +1,10 @@
 <?php
 require_once "header.php";
-require_once "../Modele/modele.php";
+require_once "../traitements/traitement.php";
+require_once "../vues/container.php";
 
 $messagesErreurs = ["L'un des champs est vide", "Le mot de passe saisi est incorrect", "L'identifiant n'existe pas"];
 
-if(empty($_SESSION["idUtilisateur"])){
-    session_destroy();
-}
 
 if(!empty($_GET["err"])){
     ?>
@@ -26,12 +24,12 @@ if(!empty($_GET["err"])){
 <h1>Formulaire de connexion</h1>
 <form method="POST" action="../traitements/connexion.php">
 
-    <div class="form-group">
+    <div class="form-group my-4">
             <label for="identifiant">Identifiant : </label>
             <input type="text" class="form-control" name="identifiant" id="identifiant" placeholder="Entrez votre identifiant" value="<?=(isset($_POST['identifiant']) ? $_POST['identifiant'] : "")?>" >
     </div>
 
-    <div class="form-group">
+    <div class="form-group my-4">
             <label for="mdp">Mot de passe : </label>
             <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" value="<?=(isset($_POST['mdp']) ? $_POST['mdp'] : "")?>" >
     </div>

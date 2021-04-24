@@ -8,3 +8,4 @@ require_once "../modeles/Reponse.php";
 require_once "../modeles/Utilisateur.php";
 require_once "../modeles/Role.php";
 require_once "../modeles/QuestionSecrete.php";
+require_once "../modeles/MdpOublier.php";

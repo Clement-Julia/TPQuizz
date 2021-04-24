@@ -4,10 +4,11 @@ class QuestionSecrete extends Modele {
 
     private $idQuestionS;
     private $question;
+    private $questionAll = [];
 
     public function __construct($idQuestionS = null){
 
-        if ( $idQuestionS != null ){
+        if ($idQuestionS != null){
 
             $requete = $this->getBdd()->prepare("SELECT * FROM question_secrete WHERE idQuestionS = ?");
             $requete->execute([$idQuestionS]);
@@ -36,4 +37,15 @@ class QuestionSecrete extends Modele {
         $this->question = $question;
     }
 
+    public function getAllQuestion(){
+        $requete = $this->getBdd()->prepare("SELECT * FROM question_secrete");
+        $requete->execute();
+        $infosQuestionS = $requete->fetchALL(PDO::FETCH_ASSOC);
+
+        foreach($infosQuestionS as $infosQuestion){
+            $this->questionAll[] = $infosQuestion["question"];
+        }
+
+        return $this->questionAll;
+    }
 }
