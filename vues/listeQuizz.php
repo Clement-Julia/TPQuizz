@@ -1,6 +1,8 @@
 <?php
 require_once "header.php";
-require_once "../Modele/modele.php";
+require_once "../traitements/traitement.php";
+require_once "../vues/container.php";
+
 $modele = new Modele();
 
 $req = $modele->getBdd()->prepare("SELECT * from quizz");

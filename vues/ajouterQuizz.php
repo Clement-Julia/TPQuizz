@@ -28,7 +28,7 @@ $categories = $categorie->toutesLesCategories();
         <div class="input-group mb-3">
             <span class="input-group-text input-group-text-default-size" id="inputGroup-sizing-default">Catégorie</span>
             <select class="form-select" name="categorie" aria-label="Default select example">
-                <option selected disabled>Open this select menu</option>
+                <option selected hidden disabled>Open this select menu</option>
                 <?php
                 foreach ( $categories as $catgorie ){
                 ?>

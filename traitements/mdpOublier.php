@@ -1,11 +1,7 @@
 <?php
-require_once "../Modele/modele.php";
-require_once "../Modele/MdpOublier.php";
-if(empty($_SESSION["email"]) || $_SESSION["email"]!= $_POST["email"]){
-    if(!empty($_POST["email"])){
-        $_SESSION["email"] = $_POST["email"];
-    }
-}
+require_once "../modeles/modele.php";
+require_once "../modeles/MdpOublier.php";
+
 $mdpOublier = new Mdp($_SESSION["email"]);
 
 if(!isset($_GET["modif"])){
@@ -17,7 +13,7 @@ if(!isset($_GET["modif"])){
             header("location:../vues/mdpOublier.php?status=none");
         }
     }else{
-        foreach($mdpOublier->getReponseSecrete($_SESSION["email"]) as $ontest){
+        foreach($mdpOublier->getReponseSecrete($_POST["email"]) as $ontest){
             $reponse = $ontest["reponse_secrete"];
         }
         if($reponse == $_POST["reponse"]){

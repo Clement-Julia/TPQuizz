@@ -1,7 +1,8 @@
 <?php
 require_once "header.php";
-/*
-require_once "../Modele/modele.php";
+require_once "../traitements/traitement.php";
+require_once "../vues/container.php";
+
 $modele = new Modele();
 
 $explode = explode(" ", $_GET["filtre"]);
@@ -50,13 +51,14 @@ if(!empty($quizz) && !empty($_GET["filtre"])){
         </div>
     </div>
     <?php
+}elseif(empty($_GET["filtre"])){
+    ?>
+    <p class="text-muted text-center h1 my-5">Votre recherche est vide...</p>
+    <?php
 }else {
     ?>
     <p class="text-muted text-center h1 my-5">Aucun quizz n'a été trouvé :(</p>
     <?php
 }
 
-
-
-*/
 require_once "footer.php";

@@ -2,7 +2,6 @@
 
 class Modele {
 
-
     public function getBdd()
     {
         $dsn = "mysql:host=localhost;dbname=tpquizz;charset=UTF8";

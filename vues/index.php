@@ -1,5 +1,6 @@
 <?php
 require_once "header.php";
+<<<<<<< HEAD
 
 $modele = new Modele();
 
@@ -7,6 +8,13 @@ if(isset($_SESSION["idUtilisateur"]) && empty($_SESSION["idUtilisateur"])){
     session_destroy();
 }
 
+=======
+require_once "../traitements/traitement.php";
+require_once "../vues/container.php";
+
+$modele = new Modele();
+
+>>>>>>> 245a1aedae8e1cbb20670f81f0cc1f5fdecc6a53
 $req = $modele->getBdd()->prepare("SELECT libelle, icone from categories");
 $req->execute();
 $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
@@ -14,7 +22,7 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
 
 <div class="d-flex alert alert-secondary mt-3 py-3">
     Explorez les catégories ou visualisez tous les quizz !
-    <a href="listeQuizz.php" class="ml-auto"><button class="btn btn-primary">
+    <a href="listeQuizz.php" class="ms-auto"><button class="btn btn-primary">
         Voir tous les quizz <i class="fas fa-chevron-right"></i>
     </button></a>
 </div>
@@ -52,7 +60,7 @@ $Cats = $req->FetchAll(PDO::FETCH_ASSOC);
     foreach($Cats as $Cat){
         ?>
         <div style="width:25%; display:inline-block; margin: 0 20px;" class="mb-4">
-            <a href="quizz.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-grey mr-3 py-3 pl-0 pr-3 radius-md policies" style="min-width: 230px;">
+            <a href="quizz.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-secondary text-light me-3 py-3 ps-0 pe-3 radius-md policies" style="min-width: 230px;">
                 <img src="<?=$Cat["icone"]?>" style="width:30px; height:30px;" HSPACE="15">
                 <?=$Cat["libelle"]?>
             </button></a>

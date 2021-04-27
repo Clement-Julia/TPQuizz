@@ -93,14 +93,23 @@ class Utilisateur extends Modele {
             
             if(!password_verify($mdp, $utilisateur["mdp"])){
                 $return["success"] = false;
-                $return["error"] = "Le mot de passe n'est pas correct";
+                $return["error"] = 1;
+            }else{
+
+                $this->idUtilisateur = $utilisateur["idUtilisateur"];
+                $this->role = $utilisateur["idRole"];
+                $this->email = $utilisateur["email"];
+                $_SESSION["idUtilisateur"] = $this->getIdUtilisateur();
+                $_SESSION["pseudo"] = $pseudo;
+                $_SESSION["role"] = $this->getRole();
+                $_SESSION["email"] = $this->getEmail();
+                $_SESSION["mdp"] = $mdp;
             }
 
-            $_SESSION["pseudo"] = $pseudo;
 
         } else {
             $return["success"] = false;
-            $return["error"] = "Le pseudo n'existe pas";
+            $return["error"] = 2;
         }
 
         return $return;
@@ -109,10 +118,71 @@ class Utilisateur extends Modele {
 
     public function inscription($email, $mdp, $pseudo, $reponseSecrete, $questionSecrete, $idRole){
 
-        $requete = $this->getBdd()->prepare("INSERT INTO utilisateurs(email, mdp, pseudo, reponse_secrete, idQuestionS, idRole) VALUES (?, ?, ?, ?, ?, ?);");
-        $requete->execute([$email, $mdp, $pseudo, $reponseSecrete, $questionSecrete, $idRole]);
+        $return = [
+            "success" => true,
+            "error" => []
+        ];
+        
+        $emailRecup = $this->getEmailInscription($email);
+        if(count($emailRecup) > 0){
+            $return["success"] = false;
+            $return["error"][] = 0;
+        }
+
+        $checkMdp = $this->check_mdp_format($mdp);
+        if(count($checkMdp) > 0){
+            $return["success"] = false;
+            $return["error"] = array_merge($return["error"], $checkMdp);
+        }
+
+        if($_POST["mdp"] !== $_POST["mdpVerif"]){
+            $return["success"] = false;
+            $return["error"][] = 1;
+        }
+
+        if(empty($return["error"])){
+
+            $mdp = password_hash($_POST["mdp"], PASSWORD_BCRYPT);
+            $requete = $this->getBdd()->prepare("INSERT INTO utilisateurs(email, mdp, pseudo, reponse_secrete, idQuestionS, idRole) VALUES (?, ?, ?, ?, ?, ?);");
+            $requete->execute([$email, $mdp, $pseudo, $reponseSecrete, $questionSecrete, $idRole]);
+        }
+
+        return $return;
 
     }
 
+    public function check_mdp_format($mdp){
 
+        $erreursMdp = [];
+        $minuscule = preg_match("/[a-z]/", $mdp);
+        $majuscule = preg_match("/[A-Z]/", $mdp);
+        $chiffre = preg_match("/[0-9]/", $mdp);
+        $caractereSpecial = preg_match("/[^a-zA-Z0-9]/", $mdp);
+        $str = strlen($mdp);
+    
+        if(!$minuscule){
+            $erreursMdp[] = 4;
+        }
+        if(!$majuscule){
+            $erreursMdp[] = 5;
+        }
+        if(!$chiffre){
+            $erreursMdp[] = 6;
+        }
+        if(!$caractereSpecial){
+            $erreursMdp[] = 7;
+        }
+        if($str < 8){
+            $erreursMdp[] = 8;
+        }
+    
+        return $erreursMdp;
+    }
+    
+    public function getEmailInscription($email){
+        $requete = $this->getBdd()->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+        $requete->execute([$email]);
+        return $requete->FetchAll(PDO::FETCH_ASSOC);
+
+    }
 }
