@@ -76,9 +76,9 @@ if(isset($_GET["error"])){
         <input type="text" class="form-control" name="reponseS" id="reponseS" placeholder="Votre réponse secrète">
     </div>
 
-    <div class="form-group btn-group mt-3">
-        <button type="submit" class="btn btn-primary" name="submit" value="ON">Inscription</button>
-        <a href="../vues/" class="btn btn-warning">Retour</a>
+    <div class="form-group btn-group d-flex justify-content-center mt-3">
+        <button type="submit" class="btn btn-primary return" name="submit" value="ON">Inscription</button>
+        <a href="../vues/" class="btn btn-warning return">Retour</a>
     </div>
 
 </form>

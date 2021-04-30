@@ -47,7 +47,7 @@ $Cats = $modele->toutesLesCategories();
     foreach($Cats as $Cat){
         ?>
         <div style="width:25%; display:inline-block; margin: 0 20px;" class="mb-4">
-            <a href="../traitements/redirection.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-secondary text-light me-3 py-3 ps-0 pe-3 radius-md policies" style="min-width: 230px;">
+            <a href="../traitements/redirection.php?filtre=<?=$Cat["libelle"]?>"><button class="btn btn-light text-dark grey me-3 py-3 ps-0 pe-3 radius-md policies" style="min-width: 230px;">
                 <img src="<?=$Cat["icone"]?>" style="width:30px; height:30px;" HSPACE="15">
                 <?=$Cat["libelle"]?>
             </button></a>

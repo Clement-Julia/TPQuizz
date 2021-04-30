@@ -298,6 +298,8 @@
 	width: 0;
     padding: 0;
 	line-height: 37px;
+    border-bottom: 4px solid #7c828e;
+    border-bottom-left-radius: 15px;
     outline: none;
     transition: width 0.2s linear;
 }
@@ -369,4 +371,12 @@
 
 .quiz_img {
     width: 100%;
+}
+
+.return {
+    flex : 0 !important
+}
+
+.grey {
+    background-color: #e2e3e5;
 }

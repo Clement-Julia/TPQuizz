@@ -41,8 +41,8 @@ if(!empty($_GET["err"])){
     </div>
 
     <div class="form-group text-center btn-group d-flex justify-content-center mt-3">
-        <button type="submit" class="btn btn-primary" name="submit" value="ON">Connexion</button>
-        <a href="index.php" class="btn btn-warning">Retour</a>
+        <button type="submit" class="btn btn-primary return" name="submit" value="ON">Connexion</button>
+        <a href="index.php" class="btn btn-warning return">Retour</a>
     </div>
 </form>
 
