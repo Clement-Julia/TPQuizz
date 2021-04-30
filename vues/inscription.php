@@ -4,7 +4,7 @@ require_once "../traitements/traitement.php";
 require_once "../vues/container.php";
 
 $questionS = new QuestionSecrete();
-$questionSecretes = $questionS->getAllQuestion();
+$questionSecretes = $questionS->getAllQuestions();
 
 
 $erreurs = ["L'email saisi est déjà utilisée", "Les deux mots de passe ne sont pas identiques", "L'âge doit être compris entre 0 et 120 ans", "Au moins un des champs n'a pas été saisi", "Le mot de passe doit contenir au moins 1 minuscule.", "Le mot de passe doit contenir au moins 1 majuscule.", "Le mot de passe doit contenir au moins 1 chiffre.", "Le mot de passe doit contenir au moins 1 caractère spécial.", "Le mot de passe doit contenir au moins 8 caractères.", "L'image existe déjà", "L'image est trop large (> 500ko)", "Seulement les fichiers de types JPG, JPEG, PNG sont autorisés"];

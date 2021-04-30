@@ -11,7 +11,9 @@ if(empty($_POST["identifiant"]) || empty($_POST["mdp"])){
 if(count($erreurs) == 0){
     
     $erreurt = $connexion->connexion($_POST["identifiant"], $_POST["mdp"]);
-    $erreurs[] = $erreurt["error"];
+    if(count($erreurt["error"]) > 0){
+        $erreurs[] = $erreurt["error"];
+    }
 }
 
 if(count($erreurs) == 0){
@@ -24,6 +26,7 @@ if(count($erreurs) == 0){
         $href .= $erreur . ",";
     }
     $href = substr($href, 0, -1);
+    print_r($erreurs);
 
     header("location:" . $href);
 }

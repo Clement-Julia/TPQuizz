@@ -123,7 +123,7 @@ class Utilisateur extends Modele {
             "error" => []
         ];
         
-        $emailRecup = $this->getEmailInscription($email);
+        $emailRecup = $this->getEmailUser($email);
         if(count($emailRecup) > 0){
             $return["success"] = false;
             $return["error"][] = 0;
@@ -179,10 +179,29 @@ class Utilisateur extends Modele {
         return $erreursMdp;
     }
     
-    public function getEmailInscription($email){
+    public function getEmailUser($email){
         $requete = $this->getBdd()->prepare("SELECT * FROM utilisateurs WHERE email = ?");
         $requete->execute([$email]);
-        return $requete->FetchAll(PDO::FETCH_ASSOC);
+        return $requete->Fetch(PDO::FETCH_ASSOC);
 
+    }
+
+    public function getQuestion($email){
+        $req = parent::getBdd()->prepare("SELECT question FROM question_secrete INNER JOIN utilisateurs USING(idQuestionS) where idUtilisateur = ?");
+        $req->execute([$email]);
+        $question = $req->Fetch(PDO::FETCH_ASSOC);
+        return $question;
+    }
+
+    public function getReponseSecreteUser($email){
+        $req = parent::getBdd()->prepare("SELECT reponse_secrete FROM utilisateurs where idUtilisateur = ?");
+        $req->execute([$email]);
+        $reponse = $req->Fetch(PDO::FETCH_ASSOC);
+        return $reponse;
+    }
+
+    public function modifMdp($newMdp, $id){
+        $req = parent::getBdd()->prepare("UPDATE utilisateurs set mdp = ? WHERE idUtilisateur = ?");
+        $req->execute([$newMdp, $id]);
     }
 }

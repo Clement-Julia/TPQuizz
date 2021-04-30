@@ -37,7 +37,7 @@ class QuestionSecrete extends Modele {
         $this->question = $question;
     }
 
-    public function getAllQuestion(){
+    public function getAllQuestions(){
         $requete = $this->getBdd()->prepare("SELECT * FROM question_secrete");
         $requete->execute();
         $infosQuestionS = $requete->fetchALL(PDO::FETCH_ASSOC);
