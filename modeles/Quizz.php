@@ -111,16 +111,25 @@ class Quizz extends Modele {
 
     }
 
-    public function creerQuizz($titre, $idCategorie){
-        // il faudra rajouter l'idUtilisateur une fois les connexions ok
-        $requete = $this->getBdd()->prepare("INSERT INTO quizz(titre, idCategorie) VALUES ( ?, ? )");
-        $requete->execute([$titre, $idCategorie]);
+    public function creerQuizz($titre, $idCategorie, $idUtilisateur){
+        
+        $requete = $this->getBdd()->prepare("INSERT INTO quizz(titre, idCategorie, idUtilisateur) VALUES ( ?, ? )");
+        $requete->execute([$titre, $idCategorie, $idUtilisateur]);
 
         $requete = $this->getBdd()->prepare("SELECT MAX(idQuizz) as idQuizz FROM quizz");
         $requete->execute();
 
         return $requete->fetch(PDO::FETCH_ASSOC);
         
+    }
+
+    public function quizzParCategorie($idCategorie){
+
+        $requete = $this->getBdd()->prepare("SELECT * FROM quizz WHERE idCategorie = ?");
+        $requete->execute([$idCategorie]);
+
+        return $requete->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
     public function setIdQuizz($idQuizz){

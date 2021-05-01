@@ -1,11 +1,7 @@
 <?php
 require_once "header.php";
-<<<<<<< HEAD
-require_once "../modeles/Modele.php";
-=======
 require_once "../traitements/traitement.php";
 require_once "../vues/container.php";
->>>>>>> 245a1aedae8e1cbb20670f81f0cc1f5fdecc6a53
 
 $questionS = new QuestionSecrete();
 $questionSecretes = $questionS->getAllQuestion();

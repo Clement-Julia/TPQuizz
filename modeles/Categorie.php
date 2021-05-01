@@ -34,4 +34,12 @@ class Categorie extends Modele {
         return $this->libelle;
     }
 
+    public function setIdCategorie($idCategorie){
+        $this->idCategorie = $idCategorie;
+    }
+
+    public function setLibelle($libelle){
+        $this->libelle = $libelle;
+    }
+
 }

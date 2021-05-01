@@ -9,7 +9,7 @@ if (
     ){
 
         $Quizz = new Quizz();
-        $idQuizz = $Quizz->creerQuizz($_POST["titre"], $_POST["categorie"]);
+        $idQuizz = $Quizz->creerQuizz($_POST["titre"], $_POST["categorie"], $_SESSION["idUtilisateur"]);
 
         foreach ( $_POST["question"] as $question ){
 

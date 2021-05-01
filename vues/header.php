@@ -1,16 +1,8 @@
 <?php
-<<<<<<< HEAD
-require_once "../modeles/modele.php";
-require_once "../modeles/Class.php";
-$Categories = new Categorie();
-$url = "/Exo/TPQuizz/vues/index.php";
-$Cats = $Categories->toutesLesCategories();
-=======
 require_once "../traitements/traitement.php";
 $modele = new Modele();
 $url = "/Exo/TPQuizz/vues/index.php";
 
->>>>>>> 245a1aedae8e1cbb20670f81f0cc1f5fdecc6a53
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +10,7 @@ $url = "/Exo/TPQuizz/vues/index.php";
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" crossorigin="anonymous">
-=======
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
->>>>>>> 245a1aedae8e1cbb20670f81f0cc1f5fdecc6a53
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script src="https://kit.fontawesome.com/f3f16a7b72.js" crossorigin="anonymous"></script>
     <title>TPQuizz</title>
