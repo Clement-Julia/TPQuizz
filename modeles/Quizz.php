@@ -135,11 +135,22 @@ class Quizz extends Modele {
     public function setIdQuizz($idQuizz){
         $this->idQuizz = $idQuizz;
     }
+
     public function setTitre($titre){
+
         $this->titre = $titre;
+        $update = $this->getBdd()->prepare("UPDATE quizz SET description = ? WHERE idQuizz = ?");
+        $update->execute([$titre, $this->getIdQuizz()]);
+
     }
+
+    // méthode demandée en cours mais qui semble faire à peu près la même chose que la méthode creerQuestion de la classe Question
     public function addQuestion($question){
+
         $this->questions[] = $question;
+        $update = $this->getBdd()->prepare("INSERT INTO questions(description, idQuizz) VALUES(?,?)");
+        $update->execute([$question, $this->getIdQuizz()]);
+
     }
 
     public function removeQuestion($idQuestion){

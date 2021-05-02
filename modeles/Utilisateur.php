@@ -58,27 +58,43 @@ class Utilisateur extends Modele {
     }
 
     public function setIdUtilisateur($idUtilisateur){
-        $this->idUtilisateur = $idUtilisateur;
+
+        $this->idUtilisateur = $idUtilisateur; //On ne voit pas l'intérêt de pouvoir modifier ce paramètre
+
     }
 
     public function setPseudo($pseudo){
+
         $this->pseudo = $pseudo;
+
+        $update = $this->getBdd()->prepare("UPDATE utilisateurs SET pseudo = ? WHERE idUtilisateur = ?");
+        $update->execute([$pseudo, $this->getIdUtilisateur()]);
+
     }
 
     public function setMdp($newMdp, $id){
         $newMdp = password_hash($newMdp, PASSWORD_BCRYPT);
         $req = parent::getBdd()->prepare("UPDATE utilisateurs set mdp = ? WHERE idUtilisateur = ?");
         $req->execute([$newMdp, $id]);
-
-        $this->mdp = $mdp;
     }
 
-    public function setQuestionSecrete($questionSecrete){
-        $this->questionSecrete = $questionSecrete;
+
+    public function setQuestionSecrete($IdQuestionSecrete){
+
+        $this->questionSecrete = new QuestionSecrete($IdQuestionSecrete);
+
+        $update = $this->getBdd()->prepare("UPDATE utilisateurs SET idQuestionS = ? WHERE idUtilisateur = ?");
+        $update->execute([$IdQuestionSecrete, $this->getIdUtilisateur()]);
+
     }
 
     public function setReponseSecrete($reponseSecrete){
+
         $this->reponseSecrete = $reponseSecrete;
+
+        $update = $this->getBdd()->prepare("UPDATE utilisateurs SET reponse_secrete = ? WHERE idUtilisateur = ?");
+        $update->execute([$reponseSecrete, $this->getIdUtilisateur()]);
+
     }
 
     public function connexion($pseudo, $mdp){ // faudrait-il pas rajouter l'idUtilisateur pour l'inclure dans la variable $_SESSION

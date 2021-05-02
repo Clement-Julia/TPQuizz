@@ -40,6 +40,8 @@ class Categorie extends Modele {
 
     public function setLibelle($libelle){
         $this->libelle = $libelle;
+        $update = $this->getBdd()->prepare("UPDATE categories SET libelle = ? WHERE idCategorie = ?");
+        $update->execute([$libelle, $this->getIdCategorie()]);
     }
 
 }

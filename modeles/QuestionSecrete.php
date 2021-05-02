@@ -35,6 +35,8 @@ class QuestionSecrete extends Modele {
 
     public function setQuestion($question){
         $this->question = $question;
+        $update = $this->getBdd()->prepare("UPDATE questions SET description = ? WHERE idQuestion = ?");
+        $update->execute([$question, $this->getIdQuestion()]);
     }
 
     public function getAllQuestions(){

@@ -55,10 +55,14 @@ class Reponse extends Modele {
 
     public function setReponse($reponse){
         $this->reponse = $reponse;
+        $update = $this->getBdd()->prepare("UPDATE reponses_quizz SET reponse = ? WHERE idReponse = ?");
+        $update->execute([$reponse, $this->getIdReponse()]);
     }
 
     public function setVrai($vrai){
         $this->vrai = $vrai;
+        $update = $this->getBdd()->prepare("UPDATE reponses_quizz SET vrai = ? WHERE idReponse = ?");
+        $update->execute([$vrai, $this->getIdReponse()]);
     }
 
 }
