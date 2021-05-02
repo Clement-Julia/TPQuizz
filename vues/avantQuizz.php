@@ -36,7 +36,7 @@ if(!empty($quizz) && !empty($_GET["filtre"])){
                                 <span class="sn_pencil" data-sn_uid="1455">Les questions s'affichent dans un ordre aléatoire. Vous ferez de nouvelles découvertes à chaque fois !</span>
                             </div>
                             <div class="d-flex justify-content-center mt-5">
-                                <a href="#" class="btn_quiz btn btn-primary">
+                                <a href="quizz.php?quizz=<?=$quizz["idQuizz"];?>" class="btn_quiz btn btn-primary">
                                     LANCER LE QUIZ
                                 </a>
                             </div>
@@ -72,7 +72,7 @@ if(!empty($quizz) && !empty($_GET["filtre"])){
                                     <span class="sn_pencil" data-sn_uid="1455">Les questions s'affichent dans un ordre aléatoire. Vous ferez de nouvelles découvertes à chaque fois !</span>
                                 </div>
                                 <div class="d-flex justify-content-center mt-5">
-                                    <a href="#" class="btn_quiz btn btn-primary">
+                                    <a href="quizz.php?quizz=<?=$info["idQuizz"]?>" class="btn_quiz btn btn-primary">
                                         LANCER LE QUIZ
                                     </a>
                                 </div>
