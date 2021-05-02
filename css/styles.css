@@ -20,6 +20,7 @@
     position: absolute;
     border: 1px solid black;
     box-shadow: 2px 2px 2px #777777;
+    top: 15vh;
 }
 
 .card-text-header{
