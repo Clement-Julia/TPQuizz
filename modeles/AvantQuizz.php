@@ -15,7 +15,7 @@ class AQ extends Modele {
 
         $req = parent::getBdd()->prepare($sql);
         $req->execute();
-        $quizz = $req->fetch(PDO::FETCH_ASSOC);
+        $quizz = $req->fetchALL(PDO::FETCH_ASSOC);
         return $quizz;
     }
 }
