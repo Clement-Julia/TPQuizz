@@ -138,10 +138,6 @@ class Quizz extends Modele {
     public function setTitre($titre){
         $this->titre = $titre;
     }
-    public function setCategorie($categorie){
-        $this->categorie = $categorie;
-    }
-
     public function addQuestion($question){
         $this->questions[] = $question;
     }
@@ -156,6 +152,13 @@ class Quizz extends Modele {
             }
         }
 
+    }
+
+    public function recupQuizz(){
+        $req = parent::getBdd()->prepare("SELECT * from quizz");
+        $req->execute();
+        $quizz = $req->fetchALL(PDO::FETCH_ASSOC);
+        return $quizz;
     }
 
 }

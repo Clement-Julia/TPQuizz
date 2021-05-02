@@ -1,31 +1,29 @@
 <?php
-require_once "../modeles/modele.php";
-require_once "../modeles/MdpOublier.php";
+require_once "../traitements/traitement.php";
 
-$mdpOublier = new Mdp($_SESSION["email"]);
+$mdpOublier = new Utilisateur();
 
 if(!isset($_GET["modif"])){
     if(empty($_POST["reponse"])){
-        $email = $mdpOublier->getMdp($_POST["email"]);
-        if(count($email) > 0){
-            header("location:../vues/mdpOublier.php?status=exist");
+        $email = $mdpOublier->getEmailUser($_POST["email"]);
+        if(!empty($email)){
+            header("location:../vues/mdpOublier.php?status=exist&user=". $email["idUtilisateur"]);
         }else{
             header("location:../vues/mdpOublier.php?status=none");
         }
     }else{
-        foreach($mdpOublier->getReponseSecrete($_POST["email"]) as $ontest){
-            $reponse = $ontest["reponse_secrete"];
-        }
+        $ontest = $mdpOublier->getReponseSecreteUser($_GET["user"]);
+        $reponse = $ontest["reponse_secrete"];
         if($reponse == $_POST["reponse"]){
-            header("location:../vues/mdpOublier.php?status=exist&reponse=correct");
+            header("location:../vues/mdpOublier.php?status=exist&reponse=correct&user=" . $_GET["user"]);
         }else{
-            header("location:../vues/mdpOublier.php?status=exist&reponse=false");
+            header("location:../vues/mdpOublier.php?status=exist&reponse=false&user=" . $_GET["user"]);
         }
     }
 }
 
 if(isset($_GET["modif"])){
-    $_POST["newMdp"] = password_hash($_POST["newMdp"], PASSWORD_BCRYPT);
-    $mdpOublier->modifMdp($_POST["newMdp"], $_SESSION["email"]);
+
+    $mdpOublier->setMdp($_POST["newMdp"], $_GET["user"]);
     header("location:../vues/mdpOublier.php?status=end");
 }

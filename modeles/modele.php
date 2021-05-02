@@ -2,7 +2,7 @@
 
 class Modele {
 
-    public function getBdd()
+    protected function getBdd()
     {
         $dsn = "mysql:host=localhost;dbname=tpquizz;charset=UTF8";
         $username = "root";

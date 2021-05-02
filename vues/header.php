@@ -1,6 +1,7 @@
 <?php
 require_once "../traitements/traitement.php";
-$modele = new Modele();
+$modele = new Categorie();
+$Cats = $modele->toutesLesCategories();
 $url = "/Exo/TPQuizz/vues/index.php";
 
 ?>
@@ -50,7 +51,7 @@ $url = "/Exo/TPQuizz/vues/index.php";
             <?php
               foreach($Cats as $Cat){
                 ?>
-                <li><a class="dropdown-item" href="quizz.php?filtre=<?=$Cat["libelle"]?>"><?=$Cat["libelle"]?></a></li>
+                <li><a class="dropdown-item" href="../vues/avantQuizz.php?categorie=<?=$Cat["idCategorie"]?>"><?=$Cat["libelle"]?></a></li>
                 <?php
               }
             ?>

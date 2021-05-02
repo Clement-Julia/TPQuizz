@@ -298,6 +298,8 @@
 	width: 0;
     padding: 0;
 	line-height: 37px;
+    border-bottom: 4px solid #7c828e;
+    border-bottom-left-radius: 15px;
     outline: none;
     transition: width 0.2s linear;
 }
@@ -336,9 +338,9 @@
 .container_intro {
     background: #FFF;
     border-radius: 15px;
-    -webkit-box-shadow: 0px 7px 17px 0px rgb(0 0 0 / 6%);
-    box-shadow: 0px 7px 17px 0px rgb(0 0 0 / 6%);
+    box-shadow: 0px 7px 17px 10px rgb(0 0 0 / 6%);
     padding-top: 40px;
+    width: 900px;
 }
 
 .row {
@@ -348,6 +350,8 @@
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .col_quiz_intro {
@@ -377,4 +381,13 @@
 
 .card-affichage-quizz{
     width: 250px;
+
+}
+
+.return {
+    flex : 0 !important
+}
+
+.grey {
+    background-color: #e2e3e5;
 }
