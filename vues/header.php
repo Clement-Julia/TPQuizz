@@ -33,6 +33,9 @@ $url = "/Exo/TPQuizz/vues/index.php";
               <li class="nav-item">
                 <a class="nav-link" href="../vues/listeQuizz.php">Liste des Quiz</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../vues/ajouterQuizz.php">Créer Quizz</a>
+              </li>
             </ul>
           </div>
         </div>
