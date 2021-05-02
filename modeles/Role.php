@@ -34,6 +34,8 @@ class Role extends Modele {
 
     public function setLibelle($libelle){
         $this->libelle = $libelle;
+        $update = $this->getBdd()->prepare("UPDATE role SET libelle = ? WHERE idRole = ?");
+        $update->execute([$libelle, $this->getIdRole()]);
     }
 
 }
