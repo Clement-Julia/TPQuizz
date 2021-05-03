@@ -25,7 +25,6 @@ if (
     !empty($_GET["quizz"])
     ){
 
-        $_SESSION["idUtilisateur"] = 2;
         $POST = [];
         for($i = 1; $i < 11; $i++){
             $POST[] = $_SESSION["idUtilisateur"];
@@ -33,29 +32,13 @@ if (
             $POST[] = $_POST["id-question-" . $i . ""];
         }
 
-        $Quizz = new Quizz();
-        $Quizz->getInsertValueBddResultatQuizz($POST);
+        $ReponsesUser = new Reponses_User();
+        $ReponsesUser->getInsertValueBddResultatQuizz($POST);
         header("location:../vues/resultatQuizz.php?quizz=" . $_GET["quizz"]);
 
     } else {
 
-        //JUSTE LE TRAVAIL A FAIRE POUR JEUDI
-        $Quizz = new Quizz($_GET["quizz"]);
-        echo $Quizz->getTitre();
-        echo "<br>";
-        echo $Quizz->getCategorie()->getIdCategorie();
-        echo "<br>";
-        echo $Quizz->getQuestions()[0]->getIdQuestion();
-        echo "<br>";
-        echo $Quizz->getQuestions()[0]->getDescription();
-        echo "<br>";
-        echo $Quizz->getQuestions()[0]->getReponses()[0]->getReponse();
-        echo "<br>";
-        echo $Quizz->getQuestions()[0]->getReponses()[0]->getVrai();
-        echo "<br>";
-        // echo "<pre>";
-        // print_r($Quizz);
-        // echo "</pre>";
+        
 
     }
     

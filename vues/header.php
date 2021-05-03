@@ -69,6 +69,22 @@ $url = "/Exo/TPQuizz/vues/index.php";
               </button>
             </div>
           </form>
+          <?php
+          if (!empty($_SESSION["idUtilisateur"]) ){
+            ?>
+            <div class="dropdown d-flex align-items-center me-2">
+              <a class="btn btn-outline-info btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown link
+              </a>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="scores.php">Scores</a></li>
+                <li><a class="dropdown-item" href="amis.php">Amis</a></li>
+              </ul>
+            </div>
+            <?php
+          }
+          ?>
           <?=(!empty($_SESSION["idUtilisateur"]) ? "" : "<a href='inscription.php' class='btn-group btn btn-outline-primary btn-sm align-self-center ml-auto'>Inscription</a>");?>
           <?=(!empty($_SESSION["idUtilisateur"]) ? "<a href='../traitements/deconnexion.php' class='btn btn-outline-danger btn-sm align-self-center '>Déconnection</a>" : "<a href='connexion.php' class='btn btn-outline-success btn-sm align-self-center'>Connection</a>");?>
         </div>

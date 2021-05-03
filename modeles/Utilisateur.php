@@ -9,6 +9,8 @@ class Utilisateur extends Modele {
     private $questionSecrete; // objet
     private $reponseSecrete;
     private $role; // objet
+    private $scores = []; // tableau d'objet
+    private $amis = []; // tableau d'objet
 
     public function __construct($idUtilisateur = null){
 
@@ -22,7 +24,7 @@ class Utilisateur extends Modele {
             $this->email = $infosUtilisateur["email"];
             $this->mdp = $infosUtilisateur["mdp"];
             $this->pseudo = $infosUtilisateur["pseudo"];
-            $this->reponseSecrete = $infosUtilisateur["reponseSecrete"];
+            $this->reponseSecrete = $infosUtilisateur["reponse_secrete"];
             $this->questionSecrete = new QuestionSecrete($infosUtilisateur["idQuestionS"]);
             $this->role = new Role($infosUtilisateur["idRole"]);
         }
@@ -219,4 +221,41 @@ class Utilisateur extends Modele {
         $reponse = $req->Fetch(PDO::FETCH_ASSOC);
         return $reponse;
     }
+
+    public function getScore(){
+
+        $requete = $this->getBdd()->prepare("SELECT * FROM score WHERE idUtilisateur = ?");
+        $requete->execute([$this->getIdUtilisateur()]);
+        $infos = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ( $infos as $info ){
+
+            $score = new Score();
+            $score->initialiserScore($info["idUtilisateur"], $info["idQuizz"], $info["score"]);
+            $this->scores[] = $score;
+
+        }
+
+        return $this->scores;
+
+    }
+
+    public function getAmis(){
+
+        $requete = $this->getBdd()->prepare("SELECT * FROM amis WHERE idUtilisateur1 = ?");
+        $requete->execute([$this->getIdUtilisateur()]);
+        $infos = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ( $infos as $info ){
+
+            $ami = new Ami();
+            $ami->initialiserAmi($info["idUtilisateur1"], $info["idUtilisateur2"]);
+            $this->amis[] = $ami;
+
+        }
+
+        return $this->amis;
+
+    }
+
 }

@@ -392,3 +392,118 @@
 .grey {
     background-color: #e2e3e5;
 }
+
+#bg-score {
+    width: 100%;
+    height: calc(100vh - 56.6px);
+    background: url("../src/img/score2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+}
+
+.card-header-score{
+    background-color: #adbedf;
+    font-size: 1.2em;
+    font-weight: 550;
+}
+
+#container-score{
+    max-height: 90vh;
+    overflow: scroll;
+    border: 1px solid white;
+    box-shadow: 2px 2px 10px white;
+}
+
+#container-score::-webkit-scrollbar {
+    display: none;
+  }
+
+.card-score{
+    max-height: 30rem;
+    min-height: 30rem;
+    border: 2px solid #adbedf;
+    box-shadow: 2px 2px 5px #adbedf;
+}
+
+.scores-php {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 550;
+}
+
+.table-score, .table-score td{
+    border: 0;
+    border-collapse: collapse;
+}
+
+.inf, .sup, .egal {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.inf{
+    color: rgb(168, 0, 0);
+}
+.sup{
+    color: green;
+}
+.egal{
+    color: rgb(83, 83, 83);
+}
+
+#bg-ami {
+    width: 100%;
+    height: calc(100vh - 56.6px);
+    background: url("../src/img/friend.jpg");
+    background-attachment: fixed;
+    background-position: 40% 50%;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+}
+
+.rouge{
+    color: red;
+    font-size: 1.5em;
+}
+
+.btn-ami{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fa73197c;
+}
+
+#container-ami{
+    max-height: 90vh;
+    overflow: scroll;
+    border: 1px solid white;
+    box-shadow: 2px 2px 10px white;
+    background-color: #6464645b;
+}
+
+#container-ami::-webkit-scrollbar {
+    display: none;
+  }
+
+.card-ami .card-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar{
+    height: 75px;
+    width: 75px;
+    border: 1px solid black;
+}

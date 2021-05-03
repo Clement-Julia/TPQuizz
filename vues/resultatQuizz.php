@@ -11,8 +11,12 @@ foreach ( $reponses as $reponse ){
         $note++;
     }
 }
-?>
+if (!empty($_SESSION["idUtilisateur"]) ){
+    $Score = new Score();
+    $Score->updateScore($_SESSION["idUtilisateur"], $_GET["quizz"], $note);
+}
 
+?>
 <div class="container mt-5">
 
     <div class="card">

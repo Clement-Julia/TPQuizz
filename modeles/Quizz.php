@@ -92,15 +92,6 @@ class Quizz extends Modele {
         return $json;
     }
 
-    public function getInsertValueBddResultatQuizz($valeurs){
-
-        $str = "INSERT INTO reponses_users(idUtilisateur, idReponse, idQuestion) VALUES " . substr(str_repeat('(?,?,?),', count($valeurs) / 3), 0, -1);; 
-
-        $requete = $this->getBdd()->prepare($str);
-        $requete->execute($valeurs);
-
-    }
-
     public function getValuesResultatQuizz($idQuizz, $idUser){
 
         $requete = $this->getBdd()->prepare("SELECT idQuizz, titre, pseudo, description, r1.idReponse as id_reponse_utilisateur, (SELECT reponse FROM reponses_quizz WHERE idReponse = r1.idReponse) as reponse_utilisateur,idQuestion, r2.idReponse, reponse, vrai FROM reponses_users r1 INNER JOIN utilisateurs USING(idUtilisateur) INNER JOIN reponses_quizz r2 USING(idQuestion) INNER JOIN questions USING(idQuestion) INNER JOIN quizz USING(idQuizz) WHERE vrai = ? AND idQuizz = ? AND utilisateurs.idUtilisateur = ?");
@@ -170,6 +161,12 @@ class Quizz extends Modele {
         $req->execute();
         $quizz = $req->fetchALL(PDO::FETCH_ASSOC);
         return $quizz;
+    }
+
+    public function getInfoQuizz($idQuizz){
+        $requete = $this->getBdd()->prepare("SELECT * FROM quizz INNER JOIN categories USING(idCategorie) WHERE idQuizz = ?");
+        $requete->execute([$idQuizz]);
+        return $requete->fetch(PDO::FETCH_ASSOC);
     }
 
 }
