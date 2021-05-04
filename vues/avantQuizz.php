@@ -13,6 +13,7 @@ if(isset($_GET["categorie"])){
     $infos = $Quizz->quizzParCategorie($_GET["categorie"]);
 }
 
+print_r($quizz);
 ?>
 
 <?php
@@ -27,20 +28,20 @@ if(!empty($quizz) && !empty($_GET["filtre"])){
                             <img class="quiz_img radius-md" src="<?=$quiz["logo"]?>" >
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-xl-5 col_quiz_intro">
-                    <div class="d-md-flex align-items-center h-100">
-                        <div>
-                            <h2 class="quiz_title mb-3 text-center">
-                                <span class="sn_pencil" data-sn_uid="1454"><?=$quizz["titre"]?></span>
-                            </h2>
-                            <div class="quiz_desc">
-                                <span class="sn_pencil" data-sn_uid="1455">Les questions s'affichent dans un ordre aléatoire. Vous ferez de nouvelles découvertes à chaque fois !</span>
-                            </div>
-                            <div class="d-flex justify-content-center mt-5">
-                                <a href="quizz.php?quizz=<?=$quizz["idQuizz"];?>" class="btn_quiz btn btn-primary">
-                                    LANCER LE QUIZ
-                                </a>
+                    <div class="col-md-6 col-xl-5 col_quiz_intro">
+                        <div class="d-md-flex align-items-center h-100">
+                            <div>
+                                <h2 class="quiz_title mb-3 text-center">
+                                    <span class="sn_pencil" data-sn_uid="1454"><?=$quiz["titre"]?></span>
+                                </h2>
+                                <div class="quiz_desc">
+                                    <span class="sn_pencil" data-sn_uid="1455">Les questions s'affichent dans un ordre aléatoire. Vous ferez de nouvelles découvertes à chaque fois !</span>
+                                </div>
+                                <div class="d-flex justify-content-center mt-5">
+                                    <a href="quizz.php?quizz=<?=$quiz["idQuizz"];?>" class="btn_quiz btn btn-primary">
+                                        LANCER LE QUIZ
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

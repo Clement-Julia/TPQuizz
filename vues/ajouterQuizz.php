@@ -3,6 +3,8 @@ require_once "header.php";
 
 $categorie = new Categorie();
 $categories = $categorie->toutesLesCategories();
+
+
 ?>
 
 <div class="container mt-5">

@@ -37,6 +37,13 @@ class Reponse extends Modele {
 
     }
     
+    public function modifReponse($reponse, $idReponse){
+
+        $requete = $this->getBdd()->prepare("UPDATE reponses_quizz set reponse = ? where idReponse   = ?");
+        $requete->execute([$reponse, $idReponse]);
+
+    }
+    
     public function getIdReponse(){
         return $this->idReponse;
     }
