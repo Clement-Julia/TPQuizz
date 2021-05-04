@@ -114,6 +114,13 @@ class Quizz extends Modele {
         
     }
 
+    public function modifQuizz($titre, $idQuizz){
+        
+        $requete = $this->getBdd()->prepare("UPDATE quizz set titre = ? where idQuizz = ?");
+        $requete->execute([$titre, $idQuizz]);
+        
+    }
+
     public function quizzParCategorie($idCategorie){
 
         $requete = $this->getBdd()->prepare("SELECT * FROM quizz WHERE idCategorie = ?");
@@ -167,6 +174,22 @@ class Quizz extends Modele {
         $requete = $this->getBdd()->prepare("SELECT * FROM quizz INNER JOIN categories USING(idCategorie) WHERE idQuizz = ?");
         $requete->execute([$idQuizz]);
         return $requete->fetch(PDO::FETCH_ASSOC);
+    }
+    public function recupQuizzNoValid(){
+        $req = parent::getBdd()->prepare("SELECT * from quizz where validationAdmin = ?");
+        $req->execute([0]);
+        $quizz = $req->fetchALL(PDO::FETCH_ASSOC);
+        return $quizz;
+    }
+
+    public function supQuizz($idQuizz){
+        $req = parent::getBdd()->prepare("DELETE from quizz inner join score using(idQuizz) inner join questions USING(idQuizz) inner join reponse USING(idQuestion) where idQuizz = ?");
+        $req->execute($idQuizz);
+    }
+
+    public function validQuizz($idQuizz){
+        $req = parent::getBdd()->prepare("UPDATE quizz set validationAdmin = ? where idQuizz = ?");
+        $req->execute([1, $idQuizz]);
     }
 
 }

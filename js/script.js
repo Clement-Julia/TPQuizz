@@ -9,7 +9,10 @@ function addClass(){
     document.getElementById("recherche").classList.add("notval");
 }
 
-setInterval(function(){if(document.getElementById("recherche").value == ""){
-    document.getElementById("recherche").classList.remove("notval");
-}}, 3000);
+var recherche = document.getElementById("recherche");
+if(recherche != null){
+    setInterval(function(){if(recherche.value == ""){
+        recherche.classList.remove("notval");
+    }}, 3000);
+}
 

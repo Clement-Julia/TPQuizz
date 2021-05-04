@@ -1,5 +1,11 @@
 <?php
 require_once "../traitements/traitement.php";
+if(!empty($_SESSION["role"])){
+  if($_SESSION["role"] == 2){
+    require_once "../admin/sidebar.php";
+  }
+}
+
 $modele = new Categorie();
 $Cats = $modele->toutesLesCategories();
 $url = "/Exo/TPQuizz/vues/index.php";
@@ -40,16 +46,10 @@ $url = "/Exo/TPQuizz/vues/index.php";
           </div>
         </div>
         <div class="d-flex justify content center position-relative">
-          <?php
-          if($_SERVER['PHP_SELF'] === $url){
-            ?>
-            <button type="button" class="btn dropdown-toggle dropdown-toggle-split radius over" data-bs-toggle="dropdown" aria-expanded="false" style ="width: 150px">
-              Catégories 
-              <span class="visually-hidden"></span>
-            </button>
-            <?php
-          }
-          ?>
+          <button type="button" class="btn dropdown-toggle dropdown-toggle-split radius over" data-bs-toggle="dropdown" aria-expanded="false" style ="width: 150px">
+            Catégories 
+            <span class="visually-hidden"></span>
+          </button>
           <ul class="dropdown-menu">
             <?php
               foreach($Cats as $Cat){

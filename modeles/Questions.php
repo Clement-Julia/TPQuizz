@@ -57,6 +57,13 @@ class Question extends Modele {
 
     }
 
+    public function modifQuestion($description, $idQuestion){
+
+        $requete = $this->getBdd()->prepare("UPDATE questions set description = ? where idQuestion = ?");
+        $requete->execute([$description, $idQuestion]);
+
+    }
+
     public function getIdQuestion(){
         return $this->idQuestion;
     }

@@ -11,11 +11,11 @@ class AQ extends Modele {
         $implode = implode(" ", $repet);
         $implode = substr($implode, 0, -4);
 
-        $sql = "SELECT * from quizz where $implode";
+        $sql = "SELECT * from quizz where $implode and validationAdmin = 1";
 
         $req = parent::getBdd()->prepare($sql);
         $req->execute();
-        $quizz = $req->fetch(PDO::FETCH_ASSOC);
+        $quizz = $req->fetchALL(PDO::FETCH_ASSOC);
         return $quizz;
     }
 }
