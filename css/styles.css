@@ -496,14 +496,94 @@
     display: none;
   }
 
+.card-ami{
+    border-radius: 20px;
+    border: 2px solid #adbedf;
+    box-shadow: 2px 2px 5px #adbedf;
+}
+
 .card-ami .card-body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #e4e4e411;
+    border-radius: 20px;
 }
 
 .avatar{
-    height: 75px;
-    width: 75px;
+    height: 60px;
+    width: 60px;
     border: 1px solid black;
+}
+.avatar, .avatar img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.inputCheckAmi{
+    position: absolute;
+    left: -9999px;
+}
+
+.inputCheckAmi + label {
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: #aaaaaa;
+    box-shadow: 2px 2px 4px grey inset;
+    border-radius: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.inputCheckAmi + label:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    background: radial-gradient(#027525, #47b167 50%);
+    z-index: 1;
+}
+
+.inputCheckAmi:checked + label:after {
+    transform: translateX(20px);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    background: radial-gradient(#700000, #df3b3b 50%);
+}
+
+.inputCheckAmi + label:after {
+    transform: translateX(0px);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    background: radial-gradient(#027525, #47b167 50%);
+}
+
+.modal-content{
+    min-height: 30rem;
+    background: url("../src/img/addFriend.png");
+    background-size: cover;
+    background-position: 50% 0%;
+}
+
+.modal-content input {
+    height: 5rem;
+    border-radius: 45%;
+    box-shadow: inset 2px 2px 5px grey;
+    text-align: center;
+}
+.modal-content input:focus, .modal-content input:active{
+    outline: none;
+}
+
+.icon{
+    position: relative;
+    top: -1rem;
+    color: rgb(80, 80, 80);
 }

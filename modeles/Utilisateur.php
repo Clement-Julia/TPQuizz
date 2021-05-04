@@ -10,7 +10,8 @@ class Utilisateur extends Modele {
     private $reponseSecrete;
     private $role; // objet
     private $scores = []; // tableau d'objet
-    private $amis = []; // tableau d'objet
+    private $scoreAmis = [];
+    private $amis = []; //tableau d'objet
 
     public function __construct($idUtilisateur = null){
 
@@ -240,6 +241,28 @@ class Utilisateur extends Modele {
 
     }
 
+    public function getScoreAmis(){
+
+        $requete = $this->getBdd()->prepare("SELECT * FROM amis WHERE idUtilisateur1 = ?");
+        $requete->execute([$this->getIdUtilisateur()]);
+        $infos = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+        $amis = [];
+        $nbAmis = substr(str_repeat("?,", count($infos)), 0, -1);
+        foreach ( $infos as $info ){
+            $amis[] = $info["idUtilisateur2"];
+        }
+
+        $requete = $this->getBdd()->prepare("SELECT * FROM score WHERE idUtilisateur IN ($nbAmis) ORDER BY score DESC");
+        $requete->execute($amis);
+        $infosScore = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->scoreAmis = $infosScore;
+
+        return $this->scoreAmis;
+
+    }
+
     public function getAmis(){
 
         $requete = $this->getBdd()->prepare("SELECT * FROM amis WHERE idUtilisateur1 = ?");
@@ -248,13 +271,44 @@ class Utilisateur extends Modele {
 
         foreach ( $infos as $info ){
 
-            $ami = new Ami();
-            $ami->initialiserAmi($info["idUtilisateur1"], $info["idUtilisateur2"]);
-            $this->amis[] = $ami;
+            $this->amis[] = new Ami($_SESSION["idUtilisateur"], $info["idUtilisateur2"]);
 
         }
 
         return $this->amis;
+
+    }
+
+    public function supprimerAmis($tabs){
+
+        $nbAmisSupprime = substr(str_repeat("?,", count($tabs)), 0, -1);
+        array_unshift($tabs, $this->getIdUtilisateur());
+
+        $requete = $this->getBdd()->prepare("DELETE FROM amis WHERE idUtilisateur1 = ? AND idUtilisateur2 IN ($nbAmisSupprime)");
+        $requete->execute($tabs);
+
+
+    }
+
+    public function ajouterAmi($pseudo){
+
+        $requete = $this->getBdd()->prepare("SELECT * FROM utilisateurs WHERE pseudo = ?");
+        $requete->execute([$pseudo]);
+        $info = $requete->fetch(PDO::FETCH_ASSOC);
+        $count = $requete->rowCount();
+
+        if ($count > 0){
+
+            $requete = $this->getBdd()->prepare("INSERT INTO amis VALUES (?, ?)");
+            $requete->execute([$this->getIdUtilisateur(), $info["idUtilisateur"]]);
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
 
     }
 

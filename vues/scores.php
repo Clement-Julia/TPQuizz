@@ -2,11 +2,11 @@
 require_once "header.php";
 $User = new Utilisateur($_SESSION["idUtilisateur"]);
 $scores = $User->getScore();
-$amis = $User->getAmis();
+$scoreAmis = $User->getScoreAmis();
 
-echo "<pre>";
-print_r($amis);
-echo "</pre>";
+// echo "<pre>";
+// print_r($scoreAmis);
+// echo "</pre>";
 
 ?>
 <div id="bg-score"></div>
@@ -36,48 +36,48 @@ echo "</pre>";
                 <div style="height:18rem; overflow:auto;">
                 <table class="table table-score">
                     <thead>
-                        <th>Pseudo Amis</th>
+                        <th>Amis</th>
                         <th>Score</th>
                     </thead>
                 <?php
-                foreach ($amis as $ami ){
-                    foreach ( $ami->getScores() as $scoreAmi ){
-                            if( $infoQ["idQuizz"] == $scoreAmi->getIdQuizz() ){
-                                $NewUser = new Utilisateur($scoreAmi->getIdUtilisateur());
-                                $nomUser = $NewUser->getPseudo();
+                foreach ($scoreAmis as $ami ){
+                    
+                    if( $infoQ["idQuizz"] == $ami["idQuizz"] ){
+                        $NewUser = new Utilisateur($ami["idUtilisateur"]);
+                        $nomUser = $NewUser->getPseudo();
+                        ?>
+                        <tbody>
+                            <?php
+                            if ( $score->getScore() > $ami["score"] ){
                                 ?>
-                                <tbody>
-                                    <?php
-                                    if ( $score->getScore() > $scoreAmi->getScore() ){
-                                        ?>
-                                        <tr class="table-danger">
-                                            <td><?=$nomUser;?></td>
-                                            <td class="d-flex justify-content-between"><?=$scoreAmi->getScore();?>
-                                            <span class='ms-auto inf'>▼</span>
-                                        </tr>
-                                        <?php
-                                    } else if ( $score->getScore() < $scoreAmi->getScore() ){
-                                        ?>
-                                        <tr class="table-success">
-                                            <td><?=$nomUser;?></td>
-                                            <td class="d-flex justify-content-between"><?=$scoreAmi->getScore();?>
-                                            <span class='ms-auto sup'>▲</span>
-                                        </tr>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <tr class="table-secondary">
-                                            <td><?=$nomUser;?></td>
-                                            <td class="d-flex justify-content-between"><?=$scoreAmi->getScore();?>
-                                            <span class='ms-auto egal'>=</span>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </tbody>
+                                <tr class="table-danger">
+                                    <td><?=$nomUser;?></td>
+                                    <td class="d-flex justify-content-between"><?=$ami["score"];?>
+                                    <span class='ms-auto inf'>▼</span>
+                                </tr>
+                                <?php
+                            } else if ( $score->getScore() < $ami["score"] ){
+                                ?>
+                                <tr class="table-success">
+                                    <td><?=$nomUser;?></td>
+                                    <td class="d-flex justify-content-between"><?=$ami["score"];?>
+                                    <span class='ms-auto sup'>▲</span>
+                                </tr>
+                                <?php
+                            } else {
+                                ?>
+                                <tr class="table-secondary">
+                                    <td><?=$nomUser;?></td>
+                                    <td class="d-flex justify-content-between"><?=$ami["score"];?>
+                                    <span class='ms-auto egal'>=</span>
+                                </tr>
                                 <?php
                             }
-                        }
+                            ?>
+                        </tbody>
+                        <?php
+                    }
+                        
                 }
                 ?>
                 </table>

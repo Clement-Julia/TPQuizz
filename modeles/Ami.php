@@ -2,41 +2,23 @@
 // les setters ne sont pas encore fait
 class Ami extends Modele {
 
-    private $idUtilisateur1;
-    private $idUtilisateur2;
-    private $scoresAmi = [];
+    private $utilisateur1; // objet
+    private $utilisateur2; // objet
+    
 
-    public function initialiserAmi($idUtilisateur1, $idUtilisateur2){
+    public function __construct($idUtilisateur1, $idUtilisateur2){
 
-        $this->idUtilisateur1 = $idUtilisateur1;
-        $this->idUtilisateur2 = $idUtilisateur2;
-
-        $requete = $this->getBdd()->prepare("SELECT * FROM score WHERE idUtilisateur = ? ORDER BY score DESC");
-        $requete->execute([$this->getIdUtilisateur2()]);
-        $infos = $requete->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ( $infos as $info ){
-
-            $score = new Score();
-            $score->initialiserScore($info["idUtilisateur"], $info["idQuizz"], $info["score"]);
-            $this->scoresAmi[] = $score;
-
-        }
-
-        $this->scoresAmi;
+        $this->utilisateur1 = new Utilisateur($idUtilisateur1);
+        $this->utilisateur2 = new Utilisateur($idUtilisateur2);
 
     }
 
-    public function getIdUtilisateur1(){
-        return $this->idUtilisateur1;
+    public function getUtilisateur1(){
+        return $this->utilisateur1;
     }
 
-    public function getIdUtilisateur2(){
-        return $this->idUtilisateur2;
-    }
-
-    public function getScores(){
-        return $this->scoresAmi;
+    public function getUtilisateur2(){
+        return $this->utilisateur2;
     }
 
 }
