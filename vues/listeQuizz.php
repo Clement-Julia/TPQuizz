@@ -5,7 +5,10 @@ require_once "../vues/container.php";
 
 $modele = new Quizz();
 $quizz = $modele->recupQuizz();
-
+?>
+<div id="bg-afficher-quizz"></div>
+<div class="overflow">
+<?php
 foreach($quizz as $quiz){
     ?>
     <div class ="d-flex justify-content-center">
@@ -39,6 +42,7 @@ foreach($quizz as $quiz){
     <?php
 }
 ?>
+</div>
 <div class= "mt-5"></div>
 <?php
 
