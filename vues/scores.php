@@ -5,6 +5,9 @@ $scores = $User->getScore();
 $scoreAmis = $User->getScoreAmis();
 
 // echo "<pre>";
+// print_r($scores);
+// echo "</pre>";
+// echo "<pre>";
 // print_r($scoreAmis);
 // echo "</pre>";
 

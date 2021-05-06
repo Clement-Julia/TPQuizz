@@ -60,4 +60,39 @@ class Categorie extends Modele {
         $req->execute([$idCat]);
     }
 
+    public function meilleurJoueurCats(){
+
+        $requete = $this->getBdd()->prepare("SELECT pseudo, libelle, AVG(score) as moyenne FROM score INNER JOIN quizz USING(idQuizz) INNER JOIN categories USING(idCategorie) INNER JOIN utilisateurs ON score.idUtilisateur = utilisateurs.idUtilisateur GROUP BY libelle, pseudo ORDER BY libelle, score DESC");
+        $requete->execute();
+        $infos = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+        $tableau = [];
+        $categories = $this->toutesLesCategories();
+
+        foreach ( $categories as $categorie ){
+            $tableau[$categorie["libelle"]]["libelle"] = $categorie["libelle"];
+            $tableau[$categorie["libelle"]]["pseudo"] = [];
+            $tableau[$categorie["libelle"]]["moyenne"] = [];
+        }
+
+        foreach ( $infos as $info ){
+
+            if ( empty($tableau[$info["libelle"]]["moyenne"]) ){
+
+                $tableau[$info["libelle"]]["pseudo"][0] = $info["pseudo"];
+                $tableau[$info["libelle"]]["moyenne"][0] = $info["moyenne"];
+
+            } else if ( $info["moyenne"] == $tableau[$info["libelle"]]["moyenne"][0] ){
+
+                array_push($tableau[$info["libelle"]]["pseudo"], $info["pseudo"]);
+                array_push($tableau[$info["libelle"]]["moyenne"], $info["moyenne"]);
+
+            }
+
+        }
+
+        return $tableau;
+
+    }
+
 }

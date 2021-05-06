@@ -305,7 +305,7 @@ class Utilisateur extends Modele {
             return true;
 
         } else {
-
+            
             return false;
 
         }

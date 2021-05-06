@@ -13,9 +13,8 @@ if(isset($_GET["categorie"])){
     $infos = $Quizz->quizzParCategorie($_GET["categorie"]);
 }
 
-print_r($quizz);
 ?>
-
+<div id="bg-afficher-quizz"></div>  
 <?php
 if(!empty($quizz) && !empty($_GET["filtre"])){
     foreach($quizz as $quiz){
